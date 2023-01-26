@@ -17,6 +17,8 @@
   <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+      <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 
   <script type="text/javascript">
   
@@ -24,7 +26,13 @@
 
    var identificadorImg;
 
+   var incremento=0;
+
    var el_color4 = "#ff0000";
+
+   var colorText;
+
+   
 
  
   document.addEventListener("drag", function( event ) {
@@ -127,6 +135,8 @@ $(document).ready(function(){
   var el_color2 = "#ff0000";
   var el_color3 = "#ff0000";
 
+  var textLetra;
+
   window.addEventListener("load", inicializar, false);
 
   window.addEventListener("load", inicializarletras, false);
@@ -182,13 +192,15 @@ function actualizar(event) {
   }
 
 
+
+ 
+
 function actualizarLetra(event) {
   // detecta el nuevo color 
   el_color3 = event.target.value;
   
   console.log(el_color3);
-
-  $("#comment").css("color",el_color3);
+     $("#"+colorText).css("color",el_color3);
 
   }
 
@@ -278,10 +290,6 @@ width: 900px !important;
 .zoom{
 
 
-
-box-shadow: 0 0 20px rgba(0, 0, 0, .8);
--webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .8);
--moz-box-shadow: 0 0 20px rgba(0, 0, 0, .8);
 transition: 1.5ms ease;
  -moz-transition: 1.5s ease; /* Firefox */
  -webkit-transition: 1.5s ease; /* Chrome - Safari */
@@ -373,6 +381,22 @@ transform : scale(1.2);
 {
     opacity:0 !important;
 }
+
+.draggable { 
+  position: absolute;
+   top: 50%;
+   left: 50%;
+  padding: 0.5em;
+  width: 240px; height: 50px;
+  background:transparent;
+
+ 
+
+ 
+  cursor:all-scroll;
+  border-style: none;
+  
+ }
 </style>
   
 
@@ -381,18 +405,17 @@ transform : scale(1.2);
    $(document).ready(function(){
 
 
-      $("#insertTexto").click(function(){
+    $('#id_select2_example').val('2').trigger('change.select2');
 
-          $("#text1").css("display","");
 
-      });
+     
 
 
       $("#tipoLetra").change(function(){
 
         var letra=$(this).val();
 
-        $("#comment").css("font-family",letra);
+       $("#"+colorText).css("font-family",letra);
 
 
         //font-family:
@@ -406,14 +429,14 @@ transform : scale(1.2);
     
         //document.getElementById("comment").style.fontSize =tamanio;
 
-       $("#comment").css("font-size",tamanio+"px");
+       $("#"+colorText).css("font-size",tamanio+"px");
 
 
         //font-family:
 
       });
 
-      var incremento=0;
+      
       var decremento=0;
 
       var incrementoAux=0;
@@ -850,7 +873,7 @@ $('.clickable').click(function() {
 
   <label>Plantilla</label>
   <select id="id_select2_example" style="width:150px;">
-    <option>Seleccionar</option>
+    <option value="2">Seleccionar</option>
     <option data-img_src="img/plantillas/plantilla4.PNG" style="padding: 20px;" value="plantilla1"> 2 X 2 </option>
     <option data-img_src="img/plantillas/plantilla3-2.PNG" value="plantilla2"> 3 X 2 </option>
     <option data-img_src="img/plantillas/plantilla1-2.PNG" value="plantilla3"> 1 X 2 </option>
@@ -875,6 +898,41 @@ $('.clickable').click(function() {
   <div class="container-fluid" style="margin-top:10px;">
     <div class="row">
       <div class="col-sm-1" style="background-color:black;" id="imagenes-album">
+
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda1.jpeg" width="100%" class="zoom clickable" id="img12" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda2.jpeg" width="100%" class="zoom clickable" id="img13" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda3.jpeg" width="100%" class="zoom clickable" id="img14" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda4.jpeg" width="100%" class="zoom clickable" id="img15" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda5.jpeg" width="100%" class="zoom clickable" id="img16" style="cursor:pointer;" />
+        </div>
+       
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda7.jpeg" width="100%" class="zoom clickable" id="img18" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda8.jpeg" width="100%" class="zoom clickable" id="img19" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda9.jpeg" width="100%" class="zoom clickable" id="img20" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda10.jpeg" width="100%" class="zoom clickable" id="img21" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda11.png" width="100%" class="zoom clickable" id="img22" style="cursor:pointer;" />
+        </div>
+        <div class="arrastrable" draggable="true">
+          <img src="img/boda12.jpeg" width="100%" class="zoom clickable" id="img23" style="cursor:pointer;" />
+        </div>
         <div class="arrastrable" draggable="true">
           <img src="img/img1.jpg" width="100%" class="zoom clickable" id="img1" style="cursor:pointer;" />
         </div>
@@ -909,23 +967,64 @@ $('.clickable').click(function() {
           <img src="img/real.png" width="100%" class="zoom clickable" id="img11" style="cursor:pointer;"/>
         </div>
       </div>
-      <div class="col-sm-6 col-sm-offset-1">
+      <div class="col-sm-6 col-sm-offset-1" id="ok">
 
-         <div class="wrapper" id="text1" style="display: none;"><!--para mover e insertar texto-->
-              <header>
-                <textarea  class="form-control campotransparente" rows="2" id="comment" style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea>
-          </header>
-            
-          </div>
+      
 
-         
+ <script>
+  $(function() {
+   // $( "#draggable" ).draggable();
+  });
+  </script>
 
 
 <script type="text/javascript">
 
+    var header;
+    var wrapper
+    var incrementoImagen=0;
+    var valorwrapper;
 
-    const wrapper = document.querySelector(".wrapper"),
-    header = wrapper.querySelector("header");
+  
+
+     
+
+      $("#insertTexto").click(function(){
+
+            incrementoImagen=incrementoImagen+1;
+
+            $("#padre"+incremento).append('<div id="draggable'+incrementoImagen+'" class="ui-widget-content draggable"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;" class="eliminaText" id="'+incrementoImagen+'"></iconify-icon><textarea  class="campotransparente" rows="1" id="colorText'+incrementoImagen+'"  style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea></div>');
+
+            $( "#draggable"+incrementoImagen).draggable();
+
+
+             $(".eliminaText").click(function(){
+
+              idText= $(this).attr("id");
+
+
+               $( "#draggable"+idText).remove();
+
+
+            });
+
+               $("#colorText"+incrementoImagen).click(function(){
+
+                 colorText= $(this).attr("id");
+
+                // alert(colorText);
+
+
+
+            });
+
+
+      });
+
+
+
+
+  
 
     function onDrag({movementX, movementY}){
       let getStyle = window.getComputedStyle(wrapper);
@@ -935,17 +1034,17 @@ $('.clickable').click(function() {
       wrapper.style.top = `${topVal + movementY}px`;
     }
 
-    header.addEventListener("mousedown", ()=>{
-      header.classList.add("active");
-      header.addEventListener("mousemove", onDrag);
-    });
 
-    document.addEventListener("mouseup", ()=>{
-      header.classList.remove("active");
-      header.removeEventListener("mousemove", onDrag);
-    });
+
+
+
+
+
+
   </script>
         <div id="contenedorpages">
+
+         
          <!--div class="zona-de-soltar fondo" style="width:100%;height:100px;border: 1;background-color: #fff;text-align: center;">
            <div class="row">
             <div class="col-sm-1 punteado" style="padding:10px;">
@@ -1038,7 +1137,7 @@ $('.clickable').click(function() {
       <div class="modal-body">
          
             <label>Brillo <iconify-icon icon="ph:sparkle" style="font-size: 20px;"></iconify-icon></label>
-            <input type="range" name="brillo" id="brillo" value="100" style="width:200px;">
+            <input type="range" name="brillo" id="brillo" value="200" style="width:200px;">
 
 
             <label>Contraste <iconify-icon icon="material-symbols:contrast" style="font-size: 20px;"></iconify-icon></label>
