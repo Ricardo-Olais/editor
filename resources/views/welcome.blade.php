@@ -17,8 +17,11 @@
   <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
-    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-      <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="https://parzibyte.github.io/ejemplos-javascript/recortar-imagen/js/cropper.min.js"></script>
+  <link rel="stylesheet" href="https://parzibyte.github.io/ejemplos-javascript/recortar-imagen/css/cropper.min.css">
+
 
   <script type="text/javascript">
   
@@ -69,7 +72,7 @@
       // comprueba si el event.target es una zona de soltar  
       if ( event.target.className == "zona-de-soltar" ) {
         // y di lo és cambia el color de fondo
-          event.target.style.background = "";
+          event.target.style.background = "#CED2D1";
 
 
       }
@@ -95,32 +98,16 @@
           event.target.style.background = "";
           // elimina el elemento arrastrado del del elemento padre
 
-        //  alert("entra");
+          console.log(event.target);
 
-        
 
          elementoArrastrado.parentNode.removeChild( elementoArrastrado );
 
-         
-          nuevo="<div class='arrastrable' draggable='true'><img src='img/img1.jpg' width='100%' class='zoom' style='opacity: 1;'></div>";
+         console.log(elementoArrastrado);
 
-        $(document).ready(function(){
+       
 
-           console.log(elementoArrastrado);
-        
-          $("#imagenes-album").append(nuevo);
-
-
-        });
-
-
-          // y lo agrega al elemento de destino
-
-
-
-
-
-          event.target.appendChild(elementoArrastrado );
+          event.target.appendChild(elementoArrastrado);
       }
     
   }, false);
@@ -242,7 +229,8 @@ function actualizarLetra(event) {
 
 body{
 
-  background-image: url("img/fondo5.jpg");
+  background-color: #F0F0F0;
+  //background-image: url("img/fondo4.jpg");
 
 
 
@@ -272,10 +260,11 @@ width: 900px !important;
   .zona-de-soltar {
     //flex:0 0 100px;
     width: 100%;
-    height: 200px;
+    height: 80px;
     //background: #000;
     padding: 10px;
     margin:10px 10px 0 0 ;
+
   }
 
   .punteado{
@@ -369,7 +358,7 @@ transform : scale(1.2);
 
 .fondoMini{
 
-  background-color: #337ab7 !important;
+  background-color: black !important;
 }
 
 /*#modalImagenes{
@@ -397,6 +386,8 @@ transform : scale(1.2);
   border-style: none;
   
  }
+
+
 </style>
   
 
@@ -448,9 +439,11 @@ transform : scale(1.2);
 
         if(incremento>0){
 
+          
           resta=incremento-1;
 
           $("#padre"+incremento).css("display","none");
+          $("#page1").css("display","none");
 
           $("#hijo"+incremento).removeClass("fondoMini");
         }
@@ -459,17 +452,20 @@ transform : scale(1.2);
         incrementoAux=incremento+1;
 
 
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border: 1;background-color: #fff;text-align: center;" id="padre'+incremento+'"><div class="row"><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div></div><div class="row"><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div></div></div>');
+        if(incremento==1){
 
-        
-        $("#cont-mini").append('<div class="fondoA" style="width:100%;height:100px;border: 1;background-color: #000;text-align: center;border:1;margin-top:10px;cursor:pointer;color:#fff;border-radius:15px;" id="hijo'+incremento+'"><img src="img/relleno.jpg" style="width:50px;">Página '+incremento+' <iconify-icon icon="mdi:alpha-x-circle-outline" style="font-size:20px;color:red;cursor:pointer;"></iconify-icon></div>');
-
-        $("#hijo"+incremento).addClass("fondoMini");
+          $("#page1").css("display","");
+        }
 
 
+        $("#paginador").css("display","");
+
+        $(".pagination").append('<li class="page-item" ><a class="page-link" id="hijo'+incremento+'">'+incremento+'</a></li>');
+        //$("#hijo"+incremento).addClass("fondoMini");
 
 
-     
+        $("#contenedorpages").append('<div class="zona-de-soltar fondo punteado" style="width:100%;height:325px;border:2;border-color: coral;background-color: #fff;text-align: center;" id="padre'+incremento+'"><div class="row"><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div></div><div class="row"><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div></div></div>');
+
 
 
 
@@ -485,16 +481,22 @@ transform : scale(1.2);
           resta=incremento-1;
 
           $("#padre"+incremento).css("display","none");
+          $("#page1").css("display","none");
         }
 
         incremento=incremento+1;
         incrementoAux=incremento+1;
 
+        if(incremento==1){
+
+          $("#page1").css("display","");
+        }
+
        
 
         switch (valor) {
               case 'plantilla1':
-                plantillaOk = '<div class="zona-de-soltar fondo" style="width:100%;height:500px;border: 1;background-color: #fff;text-align: center;" id="padre'+incremento+'"><div class="row"><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div></div><div class="row"><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6 punteado" style="padding:20px;"><div class="zona-de-soltar"></div></div></div></div>';
+                plantillaOk = '<div class="zona-de-soltar fondo punteado" style="width:100%;height:325px;border:2;border-color: coral;background-color: #fff;text-align: center;" id="padre'+incremento+'"><div class="row"><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div></div><div class="row"><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div></div></div>';
                 break;
               case 'plantilla2':
                 plantillaOk = "otra plantilla";
@@ -508,7 +510,9 @@ transform : scale(1.2);
 
         $("#contenedorpages").append(plantillaOk);
 
-        $("#cont-mini").append('<div class="fondoA" style="width:100%;height:100px;border: 1;background-color: #000;text-align: center;border:1;margin-top:10px;cursor:point;color:#fff;" id="hijo'+incremento+'"><img src="img/relleno.jpg" style="width:50px;">Página '+incremento+'</div>');
+        $("#paginador").css("display","");
+
+        $(".pagination").append('<li class="page-item" ><a class="page-link" id="hijo'+incremento+'">'+incremento+'</a></li>');
 
 
 
@@ -526,7 +530,8 @@ transform : scale(1.2);
 
       $("#atras").click(function(){
 
-        //alert(incremento);
+        
+
 
         if(incremento>1){
          // $("#next").attr("disabled",false);
@@ -537,7 +542,8 @@ transform : scale(1.2);
           $("#hijo"+incremento).removeClass("fondoMini");
 
              incremento=incremento-1;
-          $("#padre"+incremento).css("display","");
+            $("#padre"+incremento).css("display","");
+            
 
            $("#hijo"+incremento).addClass("fondoMini");
 
@@ -547,6 +553,11 @@ transform : scale(1.2);
          // $(this).attr("disabled",true);
 
         }
+        if(incremento==1){
+
+          $("#page1").css("display","");
+        }
+       
 
            
      
@@ -560,6 +571,8 @@ transform : scale(1.2);
 
 
            if ( $("#padre"+incremento).length > 0 ) {
+
+                $("#page1").css("display","none");
 
                  $("#padre"+incremento).css("display","");
                  $("#hijo"+incremento).addClass("fondoMini");
@@ -707,12 +720,15 @@ $("#rotar").change(function(){
     $("#"+identificadorImg).css("transform", "rotate("+rotar+"deg)");
 
 
+    
+
+
   });
 
 
 
 
-$('.clickable').click(function() {
+$('.clickable').dblclick(function() {
        
         
         identificadorImg=this.id;
@@ -722,18 +738,117 @@ $('.clickable').click(function() {
   });
 
 
+var idSelec;
+window.onload = function() {
+    document.addEventListener("contextmenu", function(e){
+      e.preventDefault();
+    }, false);
+   };
+
+   var src;
+//para el control de recortar
+  $('.clickable').mousedown(function(event) {
+    switch (event.which) {
+        case 3:
+
+
+           idSelec = $(this).attr("id");
+           src = $(this).attr("src");
+
+          $("#contImagen").html("<img src="+src+" width=100% id='imagen'>");
+
+ 
+
+           // document.addEventListener("DOMContentLoaded", () => {
+            var MIME_TYPE_IMAGEN_DESCARGADA = "image/jpeg",
+              EXTENSION_IMAGEN_DESCARGADA = "jpg",
+              CALIDAD_JPG = 1;
+
+        
+
+            const $btnDescargar = document.querySelector("#descargar");
+          
+            var  imagen = document.querySelector("#imagen");
+
+
+            $("#imagen").attr('src',src);
+
+            console.log(imagen);
+
+
+
+          var cropper = new Cropper(imagen, {
+            responsive: false, // <-- Si no se pone en false, la imagen se mueve cuando cambia el tamaño de la ventana
+          });
+
+          $btnDescargar.onclick = () => {
+            if (!cropper) {
+              return;
+            }
+            // Obtener el canvas recortado
+            var canvas = cropper.getCroppedCanvas();
+            // Aquí ya podemos hacer cualquier cosa con el canvas
+            var enlace = document.createElement('a');
+            // Nombre de la imagen que se descarga
+            enlace.download = "imagen_recortada." + EXTENSION_IMAGEN_DESCARGADA;
+            enlace.href = canvas.toDataURL(MIME_TYPE_IMAGEN_DESCARGADA, CALIDAD_JPG);
+
+           // console.log(enlace.download);
+
+           /* if (elementoArrastrado.src.includes("base64")) {
+
+                enlace.href =elementoArrastrado.src;
+
+
+              }else{
+               
+
+              }
+
+              console.log(enlace.href);*/
+
+            
+
+            //console.log(enlace.href);
+
+            $("#"+idSelec).attr('src',enlace.href);
+            
+          };
+
+       // });
+
+
+            
+            $('#recortarImagenes').modal('show');
+
+            //alert("mostrar el control de recorte"+idSelec);
+            break;
+    }
+}); 
+
+
+
+    $('#cargarImagenes').modal('show'); //para la carga de imagenes
+
+
+    $("#cargaIni").click(function(){
+
+        $('#cargarImagenes').modal('show'); //para la carga de imagenes      
+
+    });
 
 
 
   
-
-
-  
-
-
   });
 
 </script>
+
+<script type="text/javascript">
+    
+  </script>
+
+
 
 <script type="text/javascript">
 
@@ -763,8 +878,6 @@ $('.clickable').click(function() {
 
 <body>
 
-
-
 <div class="container" style="width:100% !important;">
 
 
@@ -773,38 +886,36 @@ $('.clickable').click(function() {
 
   <div class="btn-toolbar">
     <div class="btn-group">
-        <button type="button" class="btn">
+        <button type="button" class="btn" data-toggle="tooltip" title="Guardar">
         <iconify-icon icon="material-symbols:save" style="font-size: 24px;"></iconify-icon>
 
 
       </button>
 
-      <button type="button" class="btn">
-        <iconify-icon icon="fluent:screen-cut-20-filled" style="font-size: 24px;"></iconify-icon>
-      </button>
-      <button type="button" class="btn">
+    
+      <!--button type="button" class="btn">
         <iconify-icon icon="material-symbols:content-copy-outline-rounded" style="font-size: 24px;"></iconify-icon>
-      </button>
-      <button type="button" class="btn">
+      </button-->
+      <!--button type="button" class="btn">
         <iconify-icon icon="uil:import" style="font-size: 24px;"></iconify-icon>
-      </button>
-      <button type="button" class="btn" id="insertTexto">
+      </button-->
+      <button type="button" class="btn" id="insertTexto" data-toggle="tooltip" title="Texto">
         <iconify-icon icon="material-symbols:insert-text" style="font-size: 24px;"></iconify-icon>
       </button>
 
-       <button type="button" class="btn">
+       <button type="button" class="btn" id="cargaIni" data-toggle="tooltip" title="Cargar imágenes">
         <iconify-icon icon="material-symbols:image" style="font-size: 24px;"></iconify-icon>
       </button>
      
-      <button type="button" class="btn" id="imprimir">
+      <button type="button" class="btn" id="imprimir" data-toggle="tooltip" title="Imprimir">
         <iconify-icon icon="mdi:printer-preview" style="font-size: 24px;"></iconify-icon>
       </button>
     
-      <button type="button" class="btn">
+      <button type="button" class="btn" data-toggle="tooltip" title="Fondo de proyecto">
         <input type="color" id="colorFondo" style="width:25px;height: 25px;">
         <iconify-icon icon="ic:baseline-color-lens" style="font-size: 24px;"></iconify-icon>
       </button>
-      <button type="button" class="btn">
+      <button type="button" class="btn" >
       <select class="form-select" id="tipoLetra" name="tipoLetra">
           <option>Tipo de letra</option>
           <option>Calibri</option>
@@ -851,7 +962,7 @@ $('.clickable').click(function() {
           ?>
       </select>
 
-       <input type="color" id="colorLetra" style="width:25px;height: 25px;">
+       <input type="color" id="colorLetra" style="width:25px;height: 25px;" data-toggle="tooltip" title="Color de letra">
         <iconify-icon icon="ic:baseline-color-lens" style="font-size: 24px;"></iconify-icon>
 
 
@@ -859,13 +970,13 @@ $('.clickable').click(function() {
          
     </button>
 
-    <button type="button" class="btn" id="atras">
+    <button type="button" class="btn" id="atras" data-toggle="tooltip" title="Atrás">
         <iconify-icon icon="icon-park:back-one" style="font-size: 24px;"></iconify-icon>
     </button>
-   <button type="button" class="btn" id="agregar">
+   <button type="button" class="btn" id="agregar" data-toggle="tooltip" title="Agregar página">
         <iconify-icon icon="material-symbols:add-box-outline-rounded" style="font-size: 24px;"></iconify-icon>
    </button>
-    <button type="button" class="btn" id="next">
+    <button type="button" class="btn" id="next" data-toggle="tooltip" title="Siguiente">
         <iconify-icon icon="material-symbols:navigate-next" style="font-size: 24px;"></iconify-icon>
       </button>
 
@@ -897,77 +1008,87 @@ $('.clickable').click(function() {
 
   <div class="container-fluid" style="margin-top:10px;">
     <div class="row">
-      <div class="col-sm-1" style="background-color:black;" id="imagenes-album">
+      <div class="col-sm-1" style="background-color:#F0F0F0;width:200px; height:500px; overflow: scroll;border-radius: 10px;overflow-x: hidden;" id="imagenes-album" >
 
         <div class="arrastrable" draggable="true">
-          <img src="img/boda1.jpeg" width="100%" class="zoom clickable" id="img12" style="cursor:pointer;" />
+          <img src="img/boda1.jpeg" width="100%" class="clickable" id="img12" style="cursor:pointer;height: 115px;background-size: cover;"/>
+
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda2.jpeg" width="100%" class="zoom clickable" id="img13" style="cursor:pointer;" />
+          <img src="img/boda2.jpeg" width="100%" class="clickable" id="img13" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda3.jpeg" width="100%" class="zoom clickable" id="img14" style="cursor:pointer;" />
+          <img src="img/boda3.jpeg" width="100%" class="clickable" id="img14" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda4.jpeg" width="100%" class="zoom clickable" id="img15" style="cursor:pointer;" />
+          <img src="img/boda4.jpeg" width="100%" class="clickable" id="img15" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda5.jpeg" width="100%" class="zoom clickable" id="img16" style="cursor:pointer;" />
+          <img src="img/boda5.jpeg" width="100%" class="clickable" id="img16" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
        
         <div class="arrastrable" draggable="true">
-          <img src="img/boda7.jpeg" width="100%" class="zoom clickable" id="img18" style="cursor:pointer;" />
+          <img src="img/boda7.jpeg" width="100%" class="clickable" id="img18" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda8.jpeg" width="100%" class="zoom clickable" id="img19" style="cursor:pointer;" />
+          <img src="img/boda8.jpeg" width="100%" class="clickable" id="img19" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda9.jpeg" width="100%" class="zoom clickable" id="img20" style="cursor:pointer;" />
+          <img src="img/boda9.jpeg" width="100%" class="clickable" id="img20" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda10.jpeg" width="100%" class="zoom clickable" id="img21" style="cursor:pointer;" />
+          <img src="img/boda10.jpeg" width="100%" class="clickable" id="img21" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda11.png" width="100%" class="zoom clickable" id="img22" style="cursor:pointer;" />
+          <img src="img/boda11.png" width="100%" class="clickable" id="img22" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/boda12.jpeg" width="100%" class="zoom clickable" id="img23" style="cursor:pointer;" />
+          <img src="img/boda12.jpeg" width="100%" class="clickable" id="img23" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img1.jpg" width="100%" class="zoom clickable" id="img1" style="cursor:pointer;" />
+          <img src="img/img1.jpg" width="100%" class="clickable" id="img1" style="cursor:pointer;height: 115px;background-size: cover;" />
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img2.jpg" width="100%" class="zoom clickable" id="img2" style="cursor:pointer;"/>
+          <img src="img/img2.jpg" width="100%" class="clickable" id="img2" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img3.jpg" width="100%" class="zoom clickable" id="img3" style="cursor:pointer;"/>
+          <img src="img/img3.jpg" width="100%" class="clickable" id="img3" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img4.jpg" width="100%" class="zoom clickable" id="img4" style="cursor:pointer;"/>
+          <img src="img/img4.jpg" width="100%" class="clickable" id="img4" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img5.jpg" width="100%" class="zoom clickable" id="img5" style="cursor:pointer;"/>
+          <img src="img/img5.jpg" width="100%" class="clickable" id="img5" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
           <div class="arrastrable" draggable="true">
-          <img src="img/img1.jpg" width="100%" class="zoom clickable" id="img6" style="cursor:pointer;"/>
+          <img src="img/img1.jpg" width="100%" class="clickable" id="img6" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img2.jpg" width="100%" class="zoom clickable" id="img7" style="cursor:pointer;"/>
+          <img src="img/img2.jpg" width="100%" class="clickable" id="img7" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img3.jpg" width="100%" class="zoom clickable" id="img8" style="cursor:pointer;"/>
+          <img src="img/img3.jpg" width="100%" class="clickable" id="img8" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img4.jpg" width="100%" class="zoom clickable" id="img9" style="cursor:pointer;"/>
+          <img src="img/img4.jpg" width="100%" class="clickable" id="img9" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/img5.jpg" width="100%" class="zoom clickable" id="img10" style="cursor:pointer;"/>
+          <img src="img/img5.jpg" width="100%" class="clickable" id="img10" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
         <div class="arrastrable" draggable="true">
-          <img src="img/real.png" width="100%" class="zoom clickable" id="img11" style="cursor:pointer;"/>
+          <img src="img/real.png" width="100%" class="clickable" id="img11" style="cursor:pointer;height: 115px;background-size: cover;"/>
         </div>
       </div>
-      <div class="col-sm-6 col-sm-offset-1" id="ok">
+
+      <div class="col-sm-4">
+        <div id="page1" style="width:100%;height: 325px;background-color: #9A9D9C;margin:10px 10px 0 0 ;display: none;"></div>
+
+
+      </div>
+
+
+
+      <div class="col-sm-4" style="padding-right: 0px !important;padding-left: 0px !important;">
 
       
 
@@ -993,7 +1114,7 @@ $('.clickable').click(function() {
 
             incrementoImagen=incrementoImagen+1;
 
-            $("#padre"+incremento).append('<div id="draggable'+incrementoImagen+'" class="ui-widget-content draggable"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;" class="eliminaText" id="'+incrementoImagen+'"></iconify-icon><textarea  class="campotransparente" rows="1" id="colorText'+incrementoImagen+'"  style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea></div>');
+            $("#padre"+incremento).append('<div id="draggable'+incrementoImagen+'" class="ui-widget-content draggable"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;color:red;" class="eliminaText" id="'+incrementoImagen+'"></iconify-icon><textarea  class="campotransparente" rows="1" id="colorText'+incrementoImagen+'"  style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea></div>');
 
             $( "#draggable"+incrementoImagen).draggable();
 
@@ -1074,6 +1195,8 @@ $('.clickable').click(function() {
 
         </div-->
 
+
+
       </div>
 
 
@@ -1107,7 +1230,15 @@ $('.clickable').click(function() {
 
         </div-->
 
-
+          <nav aria-label="Page navigation example" style="display:none;" id="paginador">
+            <ul class="pagination">
+              <!--li class="page-item"><a class="page-link" href="#">Atrás</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Siguiente</a></li-->
+            </ul>
+          </nav>
 
 
 
@@ -1124,7 +1255,7 @@ $('.clickable').click(function() {
 
   <!-- The Modal para mostrar controles de imagen-->
 <div class="modal" id="modalImagenes" role="dialog" style="margin-top:0px;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1">
-  <div class="modal-dialog" style="width:300px;float: right;">
+  <div class="modal-dialog" style="width:250px;float: right;">
     <div class="modal-content">
 
       <!-- Modal Header -->
@@ -1176,6 +1307,94 @@ $('.clickable').click(function() {
     </div>
   </div>
 </div>
+
+<!----Modal de inicio -->
+
+<div class="modal" id="cargarImagenes" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1" style="margin-top:100px;">
+  <div class="modal-dialog" style="width:300px;">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Carga tus Imágenes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <div class="card">
+            <div class="card-body">
+             <form method='post' action='' enctype="multipart/form-data">
+               <input type="file" id='files' name="files[]" multiple><br>
+              
+            </form>
+              <button type="button" class="btn btn-default"><img src="img/logos_carga/facebook.png" width="60"></button>
+              <button type="button" class="btn btn-default"><img src="img/logos_carga/instagram.jpg" width="60"></button>
+              <button type="button" class="btn btn-default"><img src="img/logos_carga/local.jpg" width="57"></button>
+
+              
+              
+            </div>
+          </div>
+         
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-primary" data-dismiss="modal">Listo</button-->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!----Modal para recortar-->
+
+<div class="modal" id="recortarImagenes" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1" style="margin-top:100px;">
+  <div class="modal-dialog" style="width:400px;float: right;">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Recortar Imágen</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <div class="card">
+            <div class="card-body" >
+
+                 <div id="contImagen">
+                     <!--img src="img/boda1.jpeg" id="imagen"  width="100%"-->
+
+                 </div>
+                
+
+         
+                         
+            </div>
+          </div>
+         
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="font-size:18px;">Cancelar</button>
+        <button type="button" class="btn btn-primary"  id="descargar" style="font-size:18px;">Recortar <iconify-icon icon="ooui:cut-ltr" style="font-size: 18px;"></iconify-icon></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
