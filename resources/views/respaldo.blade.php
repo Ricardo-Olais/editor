@@ -266,7 +266,7 @@ width: 900px !important;
     height: 80px;
     //background: #000;
     padding: 10px;
-    margin:10px 10px 60px ;
+    margin:10px 10px 0 0 ;
 
   }
 
@@ -430,20 +430,6 @@ button.btn-settings:active {
   font-size: 1.1em;
 }
 
-.mascara1 {
-  -webkit-mask-image: url('img/mascaras/1.png');
-  mask-image: url('img/mascaras/1.png');
-  object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
-
-}
-
-.mascara2 {
-  -webkit-mask-image: url('img/mascaras/2.png');
-  mask-image: url('img/mascaras/2.png');
-  object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
-
-}
-
 
 </style>
   
@@ -451,14 +437,6 @@ button.btn-settings:active {
 <script type="text/javascript">
   
    $(document).ready(function(){
-
-
-    function toggleZoomScreen() {
-        document.body.style.zoom = "84%";
-    }
-
-
-    toggleZoomScreen();
 
 
     $('#id_select2_example').val('2').trigger('change.select2');
@@ -541,7 +519,7 @@ button.btn-settings:active {
 
       });
 
-     $("#id_select2_example2").change(function(){
+     /* $("#id_select2_example2").change(function(){
 
          var imgfondo=$(this).val();
         // alert(imgfondo);
@@ -549,54 +527,7 @@ button.btn-settings:active {
          $(".fondo").css("background-size","cover");
          //alert(incremento);
 
-      });
-
-
-     $("#id_select2_example3").change(function(){
-
-         var idm=$(this).val();
-
-
-          if(idm==0){
-
-            $("#img0").removeClass("mascara2")
-            $("#img0").removeClass("mascara1");
-
-         }
-
-
-         if(idm==1){
-
-            $("#img0").removeClass("mascara2")
-            $("#img0").addClass("mascara1");
-
-         }
-
-           if(idm==2){
-
-            $("#img0").removeClass("mascara1");
-            $("#img0").addClass("mascara2");
-
-         }
-
-         //$("#img0").addClass("mascara1");
-
-         /*
-          .two {
-            -webkit-mask-image: url('2.png');
-            mask-image: url('2.png');
-
-          }
-         */
-
-        // alert(imgfondo);
-        /* $(".fondo").css("background-image","url("+imgfondo+")");
-         $(".fondo").css("background-size","cover");
-         $(".fondo").css("opacity","absolute");
-         $(".fondo").css("z-index","2000");*/
-         //alert(incremento);
-
-      });
+      });*/
 
 
 
@@ -745,7 +676,7 @@ button.btn-settings:active {
           handle: ".modal-header",
           cursor: 'move'
         });
-        //$modal.resizable();
+        $modal.resizable();
 
 
     
@@ -783,9 +714,6 @@ button.btn-settings:active {
 
  
   $('#id_select2_example2').select2(options);
-  $('.select2-container--default .select2-selection--single').css({'height': '40px'});
-
-  $('#id_select2_example3').select2(options);
   $('.select2-container--default .select2-selection--single').css({'height': '40px'});
 
   $("#brillo").change(function(){
@@ -905,12 +833,9 @@ $("#rotar").change(function(){
                url= URL.createObjectURL($(this).get(0).files[i]);
 
 
-                $("#imagenes-album").append('<div class="arrastrable" draggable="true"><img src="'+url+'" width="100%" class="clickable"  style="cursor:pointer;height: auto;background-size: cover;" id="img'+i+'"/></div>');
 
 
-
-
-             /* let reader = new FileReader();
+              let reader = new FileReader();
                reader.readAsDataURL($(this).get(0).files[i]); 
 
 
@@ -922,7 +847,7 @@ $("#rotar").change(function(){
 
 
 
-                 }*/
+                 }
 
       
          
@@ -934,7 +859,7 @@ $("#rotar").change(function(){
         
             identificadorImg=this.id;
 
-           // alert(identificadorImg);
+            alert(identificadorImg);
 
            $('#modalImagenes').modal('show');
  
@@ -953,7 +878,7 @@ $("#rotar").change(function(){
            idSelec = $(this).attr("id");
            src = $(this).attr("src");
 
-          $("#contImagen").html("<img src="+src+"  id='imagen' style='width:100%;height:auto;'>");
+          $("#contImagen").html("<img src="+src+" width=100% id='imagen'>");
 
  
 
@@ -1254,20 +1179,6 @@ $(document).ready(function(){
     
   </select>
 </button>
-
-
-<button type="button" class="btn">
-
-  <!--label>Imagen de Fondo</label-->
-  <select id="id_select2_example3" style="width:150px;">
-    <option value="2">Seleccionar</option>
-    <option data-img_src="img/mascaras/ninguna.png" value="0"></option>
-    <option data-img_src="img/mascaras/1.png" value="1"></option>
-    <option data-img_src="img/mascaras/2.png" value="2"></option>
-    
-    
-  </select>
-</button>
   </div>
 
 
@@ -1512,7 +1423,7 @@ $(document).ready(function(){
             <label>Sepia <iconify-icon icon="mdi:theme-light-dark" style="font-size: 20px;"></iconify-icon></label>
             <input type="range" name="sepia" id="sepia" value="0" style="width:200px;">
 
-            <label>Color de Marco</label>
+            <label>Agrega un Marco de color</label>
             <input type="color" id="colorMarco" style="width:25px;height: 25px;">
             <iconify-icon icon="ic:baseline-color-lens" style="font-size: 24px;"></iconify-icon>
 
@@ -1580,7 +1491,7 @@ $(document).ready(function(){
 <!----Modal para recortar-->
 
 <div class="modal fade" id="recortarImagenes"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1" >
-  <div class="modal-dialog" style="width:300px;">
+  <div class="modal-dialog" style="width:400px;">
     <div class="modal-content">
 
       <!-- Modal Header -->
