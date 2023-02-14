@@ -22,7 +22,9 @@
   <script src="https://parzibyte.github.io/ejemplos-javascript/recortar-imagen/js/cropper.min.js"></script>
   <link rel="stylesheet" href="https://parzibyte.github.io/ejemplos-javascript/recortar-imagen/css/cropper.min.css">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
 
 
   <script type="text/javascript">
@@ -361,7 +363,7 @@ transform : scale(1.2);
 
 .fondoMini{
 
-  background-color: black !important;
+  background-color: #8ADCDC !important;
 }
 
 /*#modalImagenes{
@@ -431,15 +433,15 @@ button.btn-settings:active {
 }
 
 .mascara1 {
-  -webkit-mask-image: url('img/mascaras/1.png');
-  mask-image: url('img/mascaras/1.png');
+  -webkit-mask-image: url('../img/mascaras/1.png');
+  mask-image: url('../img/mascaras/1.png');
   object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
 
 }
 
 .mascara2 {
-  -webkit-mask-image: url('img/mascaras/2.png');
-  mask-image: url('img/mascaras/2.png');
+  -webkit-mask-image: url('../img/mascaras/2.png');
+  mask-image: url('../img/mascaras/2.png');
   object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
 
 }
@@ -507,8 +509,9 @@ button.btn-settings:active {
           
           resta=incremento-1;
 
+          $("#padre11"+incremento).css("display","none");
           $("#padre"+incremento).css("display","none");
-          $("#page1").css("display","none");
+         // $("#page1").css("display","none");
 
           $("#hijo"+incremento).removeClass("fondoMini");
         }
@@ -519,7 +522,7 @@ button.btn-settings:active {
 
         if(incremento==1){
 
-          $("#page1").css("display","");
+          //$("#page1").css("display","");
         }
 
 
@@ -529,12 +532,15 @@ button.btn-settings:active {
         //$("#hijo"+incremento).addClass("fondoMini");
 
 
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px"></div><div class="zona-de-soltar" style="height:140px"></div></div></div>');
+        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'">'+incrementoAux+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px"></div><div class="zona-de-soltar" style="height:140px"></div></div></div>');
+
+
+        $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'">'+incremento+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px"></div><div class="zona-de-soltar" style="height:140px"></div></div></div>');
 
 
 
 
-        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;'><img src='img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
+        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;' id='vista"+incremento+"'><img src='../img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
 
 
 
@@ -559,23 +565,23 @@ button.btn-settings:active {
 
           if(idm==0){
 
-            $("#img0").removeClass("mascara2")
-            $("#img0").removeClass("mascara1");
+            $("#"+identificadorImg).removeClass("mascara2");
+            $("#"+identificadorImg).removeClass("mascara1");
 
          }
 
 
          if(idm==1){
 
-            $("#img0").removeClass("mascara2")
-            $("#img0").addClass("mascara1");
+            $("#"+identificadorImg).removeClass("mascara2");
+            $("#"+identificadorImg).addClass("mascara1");
 
          }
 
            if(idm==2){
 
-            $("#img0").removeClass("mascara1");
-            $("#img0").addClass("mascara2");
+            $("#"+identificadorImg).removeClass("mascara1");
+            $("#"+identificadorImg).addClass("mascara2");
 
          }
 
@@ -611,6 +617,7 @@ button.btn-settings:active {
 
           $("#padre"+incremento).css("display","none");
           $("#page1").css("display","none");
+          //$("#atras").prop( "disabled", false);
         }
 
         incremento=incremento+1;
@@ -665,18 +672,23 @@ button.btn-settings:active {
 
 
         if(incremento>1){
+
+          $("#next").prop( "disabled", false);
          // $("#next").attr("disabled",false);
           //$(this).attr("disabled",false);
+          $("#padre11"+incremento).css("display","none");
           $("#padre"+incremento).css("display","none");
 
 
-          $("#hijo"+incremento).removeClass("fondoMini");
+            $("#vista"+incremento).removeClass("fondoMini");
 
              incremento=incremento-1;
+            $("#padre11"+incremento).css("display","");
             $("#padre"+incremento).css("display","");
+
             
 
-           $("#hijo"+incremento).addClass("fondoMini");
+            $("#vista"+incremento).addClass("fondoMini");
 
 
 
@@ -686,7 +698,10 @@ button.btn-settings:active {
         }
         if(incremento==1){
 
-          $("#page1").css("display","");
+          
+          $("#atras").prop( "disabled", true);
+
+         // $("#page1").css("display","");
         }
        
 
@@ -701,25 +716,41 @@ button.btn-settings:active {
 
 
 
+           $("#atras").prop( "disabled", false);
+
+
+
            if ( $("#padre"+incremento).length > 0 ) {
 
-                $("#page1").css("display","none");
 
+                
+               // $("#page1").css("display","none");
+                 $("#padre11"+incremento).css("display","");
                  $("#padre"+incremento).css("display","");
-                 $("#hijo"+incremento).addClass("fondoMini");
+                 $("#vista"+incremento).addClass("fondoMini");
 
                  
-
+                  $("#padre11"+decremento).css("display","none");
                   $("#padre"+decremento).css("display","none");
-                  $("#hijo"+decremento).removeClass("fondoMini");
-
-                  
 
 
-
-                  
+                  $("#vista"+decremento).removeClass("fondoMini");
 
             }
+
+            //alert(incrementoAux+"  ---  "+incremento);
+
+            if((incrementoAux-1)==incremento){
+
+               $("#next").prop( "disabled", true);
+         
+            }else{
+
+                $("#next").prop( "disabled", false);
+            }
+
+
+           
 
      
       });
@@ -1055,29 +1086,100 @@ window.onload = function() {
 
   $(document).ready(function(){
 
-  var doc = new jsPDF("p", "mm", "a4");
+ /* var doc = new jsPDF("p", "mm", "a4");
 
   var width = doc.internal.pageSize.width;
   var height = doc.internal.pageSize.height;
 
-console.log(width);
+console.log(width);*/
+
+
+function getPDF() {
+ var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#contenedorpages');
+
+        specialElementHandlers = {
+            '#getPDF': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+
+        pdf.fromHTML(
+            source, 
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, 
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                pdf.save('Prueba.pdf');
+            }, margins
+        );
+}
 
 
 
  $("#imprimir").click(function(){
+
+     // getPDF();
   
-    var pdf = new jsPDF('p', 'pt', 'a4');
+    var pdf = new jsPDF('p', 'pt', 'letter');
 
     $(".fondo").css("display","");
 
     var el = document.getElementById("contenedorpages");
      //console.log(el.innerHTML);
+
+       margins = {
+            top: 80,
+            bottom: 60,
+            left: 100,
+            width: 522
+        };
   
 
        pdf.addHTML($('#contenedorpages'), function () {
            pdf.save('album.pdf');
            $(".fondo").css("display","none");
-       });
+       },margins);
+
+    /*var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#contenedorpages')[0];
+
+       
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+
+        pdf.fromHTML(
+            source, 
+            margins.left, 
+            margins.top, { 
+                'width': margins.width
+                
+            },
+
+            function (dispose) {
+                pdf.save('Prueba.pdf');
+            }, margins
+        );*/
+    
+
+
+
+
+
+
 
 
     });
@@ -1108,7 +1210,7 @@ $(document).ready(function(){
 <div class="container" style="width:100% !important;">
 
 
-
+{{ $pages }}
 
 
   <div class="btn-toolbar">
@@ -1212,23 +1314,23 @@ $(document).ready(function(){
   <!--label>Plantilla</label-->
   <select id="id_select2_example" style="width:150px;">
     <option value="2">Seleccionar</option>
-    <option data-img_src="img/plantillas/plantilla1.PNG" value="plantilla1"></option>
-    <option data-img_src="img/plantillas/plantilla2.PNG" value="plantilla2"></option>
-    <option data-img_src="img/plantillas/plantilla3.PNG" value="plantilla3"></option>
-    <option data-img_src="img/plantillas/plantilla4.PNG" value="plantilla4"></option>
-    <option data-img_src="img/plantillas/plantilla5.PNG" value="plantilla5"></option>
-    <option data-img_src="img/plantillas/plantilla6.PNG" value="plantilla6"></option>
-    <option data-img_src="img/plantillas/plantilla7.PNG" value="plantilla7"></option>
-    <option data-img_src="img/plantillas/plantilla8.PNG" value="plantilla8"></option>
-    <option data-img_src="img/plantillas/plantilla9.PNG" value="plantilla9"></option>
-    <option data-img_src="img/plantillas/plantilla10.PNG" value="plantilla10"></option>
-    <option data-img_src="img/plantillas/plantilla11.PNG" value="plantilla11"></option>
-    <option data-img_src="img/plantillas/plantilla12.PNG" value="plantilla12"></option>
-    <option data-img_src="img/plantillas/plantilla13.PNG" value="plantilla13"></option>
-    <option data-img_src="img/plantillas/plantilla14.PNG" value="plantilla14"></option>
-    <option data-img_src="img/plantillas/plantilla15.PNG" value="plantilla15"></option>
-    <option data-img_src="img/plantillas/plantilla16.PNG" value="plantilla16"></option>
-    <option data-img_src="img/plantillas/plantilla17.PNG" value="plantilla17"></option>
+    <option data-img_src="../img/plantillas/plantilla1.PNG" value="plantilla1"></option>
+    <option data-img_src="../img/plantillas/plantilla2.PNG" value="plantilla2"></option>
+    <option data-img_src="../img/plantillas/plantilla3.PNG" value="plantilla3"></option>
+    <option data-img_src="../img/plantillas/plantilla4.PNG" value="plantilla4"></option>
+    <option data-img_src="../img/plantillas/plantilla5.PNG" value="plantilla5"></option>
+    <option data-img_src="../img/plantillas/plantilla6.PNG" value="plantilla6"></option>
+    <option data-img_src="../img/plantillas/plantilla7.PNG" value="plantilla7"></option>
+    <option data-img_src="../img/plantillas/plantilla8.PNG" value="plantilla8"></option>
+    <option data-img_src="../img/plantillas/plantilla9.PNG" value="plantilla9"></option>
+    <option data-img_src="../img/plantillas/plantilla10.PNG" value="plantilla10"></option>
+    <option data-img_src="../img/plantillas/plantilla11.PNG" value="plantilla11"></option>
+    <option data-img_src="../img/plantillas/plantilla12.PNG" value="plantilla12"></option>
+    <option data-img_src="../img/plantillas/plantilla13.PNG" value="plantilla13"></option>
+    <option data-img_src="../img/plantillas/plantilla14.PNG" value="plantilla14"></option>
+    <option data-img_src="../img/plantillas/plantilla15.PNG" value="plantilla15"></option>
+    <option data-img_src="../img/plantillas/plantilla16.PNG" value="plantilla16"></option>
+    <option data-img_src="../img/plantillas/plantilla17.PNG" value="plantilla17"></option>
   </select>
 </button>
 
@@ -1239,18 +1341,18 @@ $(document).ready(function(){
   <!--label>Imagen de Fondo</label-->
   <select id="id_select2_example2" style="width:150px;">
     <option value="2">Seleccionar</option>
-    <option data-img_src="img/fondos/1.jpeg" value="img/fondos/1.jpeg"></option>
-    <option data-img_src="img/fondos/2.jpeg" value="img/fondos/2.jpeg"></option>
-    <option data-img_src="img/fondos/3.jpeg" value="img/fondos/3.jpeg"></option>
-    <option data-img_src="img/fondos/4.jpeg" value="img/fondos/4.jpeg"></option>
-    <option data-img_src="img/fondos/5.jpeg" value="img/fondos/5.jpeg"></option>
-    <option data-img_src="img/fondos/6.jpeg" value="img/fondos/6.jpeg"></option>
-    <option data-img_src="img/fondos/7.jpeg" value="img/fondos/7.jpeg"></option>
-    <option data-img_src="img/fondos/8.jpeg" value="img/fondos/8.jpeg"></option>
-    <option data-img_src="img/fondos/9.jpeg" value="img/fondos/9.jpeg"></option>
-    <option data-img_src="img/fondos/10.jpeg" value="img/fondos/10.jpeg"></option>
-    <option data-img_src="img/fondos/11.jpeg" value="img/fondos/11.jpeg"></option>
-    <option data-img_src="img/fondos/12.jpeg" value="img/fondos/12.jpeg"></option>
+    <option data-img_src="../img/fondos/1.jpeg" value="../img/fondos/1.jpeg"></option>
+    <option data-img_src="../img/fondos/2.jpeg" value="../img/fondos/2.jpeg"></option>
+    <option data-img_src="../img/fondos/3.jpeg" value="../img/fondos/3.jpeg"></option>
+    <option data-img_src="../img/fondos/4.jpeg" value="../img/fondos/4.jpeg"></option>
+    <option data-img_src="../img/fondos/5.jpeg" value="../img/fondos/5.jpeg"></option>
+    <option data-img_src="../img/fondos/6.jpeg" value="../img/fondos/6.jpeg"></option>
+    <option data-img_src="../img/fondos/7.jpeg" value="../img/fondos/7.jpeg"></option>
+    <option data-img_src="../img/fondos/8.jpeg" value="../img/fondos/8.jpeg"></option>
+    <option data-img_src="../img/fondos/9.jpeg" value="../img/fondos/9.jpeg"></option>
+    <option data-img_src="../img/fondos/10.jpeg" value="../img/fondos/10.jpeg"></option>
+    <option data-img_src="../img/fondos/11.jpeg" value="../img/fondos/11.jpeg"></option>
+    <option data-img_src="../img/fondos/12.jpeg" value="../img/fondos/12.jpeg"></option>
     
   </select>
 </button>
@@ -1259,14 +1361,7 @@ $(document).ready(function(){
 <button type="button" class="btn">
 
   <!--label>Imagen de Fondo</label-->
-  <select id="id_select2_example3" style="width:150px;">
-    <option value="2">Seleccionar</option>
-    <option data-img_src="img/mascaras/ninguna.png" value="0"></option>
-    <option data-img_src="img/mascaras/1.png" value="1"></option>
-    <option data-img_src="img/mascaras/2.png" value="2"></option>
-    
-    
-  </select>
+  
 </button>
   </div>
 
@@ -1301,7 +1396,7 @@ $(document).ready(function(){
       </div>
 
       <div class="col-sm-4">
-        <div id="page1" style="width: 450;height: 450px;background-color: #9A9D9C;margin:10px 10px 0 0 ;display: none;"></div>
+        <div id="page1" style="width: 450;height: 450px;background-color: #9A9D9C;margin:10px 10px 0 0 ;margin-right: -15px;"></div>
 
 
       </div>
@@ -1388,84 +1483,15 @@ $(document).ready(function(){
   </script>
         <div id="contenedorpages" >
 
-         
-
-         
-         <!--style="height:1122px;width: 793px;"div class="zona-de-soltar fondo" style="width:100%;height:100px;border: 1;background-color: #fff;text-align: center;">
-           <div class="row">
-            <div class="col-sm-1 punteado" style="padding:10px;">
-
-                  <div class="zona-de-soltar" style="height:10px !important;"></div>
-            </div>
-
-            <div class="col-sm-1 punteado" style="padding:10px;">
-
-                <div class="zona-de-soltar" style="height:10px !important;"></div>
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-sm-1 punteado" style="padding:10px;">
-
-                  <div class="zona-de-soltar" style="height:10px !important;"></div>
-            </div>
-
-            <div class="col-sm-1 punteado" style="padding:10px;">
-
-                <div class="zona-de-soltar" style="height:10px !important;"></div>
-            </div>
-
-          </div>
-
-        </div-->
+        </div>
 
 
-
-      </div>
-
-
-
-         <!--div class="zona-de-soltar fondo" style="width:100%;height:500px;border: 1;background-color: #fff;text-align: center;">
-           <div class="row">
-            <div class="col-sm-6 punteado" style="padding:20px;">
-
-                  <div class="zona-de-soltar"></div>
-            </div>
-
-            <div class="col-sm-6 punteado" style="padding:20px;">
-
-                <div class="zona-de-soltar"></div>
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 punteado" style="padding:20px;">
-
-                  <div class="zona-de-soltar"></div>
-            </div>
-
-            <div class="col-sm-6 punteado" style="padding:20px;">
-
-                <div class="zona-de-soltar"></div>
-            </div>
-
-          </div>
-
-        </div-->
 
           <nav aria-label="Page navigation example" style="display:none;" id="paginador">
             <ul class="pagination">
-              <!--li class="page-item"><a class="page-link" href="#">Atrás</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Siguiente</a></li-->
+            
             </ul>
           </nav>
-
-
 
     </div>
 
@@ -1522,6 +1548,19 @@ $(document).ready(function(){
 
             <label>Rotar<iconify-icon icon="fluent-mdl2:line-thickness" style="font-size: 24px;"></iconify-icon></label>
             <input type="range" name="rotar" id="rotar" value="-360" style="width:200px;">
+
+            <label>Máscara</label>
+
+            <select id="id_select2_example3" style="width:150px;">
+              <option value="2">Seleccionar</option>
+              <option data-img_src="../img/mascaras/ninguna.png" value="0"></option>
+              <option data-img_src="../img/mascaras/1.png" value="1"></option>
+              <option data-img_src="../img/mascaras/2.png" value="2"></option>
+              
+              
+            </select>
+
+
       </div>
 
       <!-- Modal footer -->
@@ -1554,9 +1593,9 @@ $(document).ready(function(){
                <input type="file" id='files' name="file1" multiple><br>
               
             </form>
-              <button type="button" class="btn btn-default"><img src="img/logos_carga/facebook.png" width="60"></button>
-              <button type="button" class="btn btn-default"><img src="img/logos_carga/instagram.jpg" width="60"></button>
-              <button type="button" class="btn btn-default" id="local"><img src="img/logos_carga/local.jpg" width="57"></button>
+              <button type="button" class="btn btn-default"><img src="../img/logos_carga/facebook.png" width="60"></button>
+              <button type="button" class="btn btn-default"><img src="../img/logos_carga/instagram.jpg" width="60"></button>
+              <button type="button" class="btn btn-default" id="local"><img src="../img/logos_carga/local.jpg" width="57"></button>
 
               
               
@@ -1610,6 +1649,7 @@ $(document).ready(function(){
 
       <!-- Modal footer -->
       <div class="modal-footer">
+
         <button type="button" class="btn btn-default" data-dismiss="modal" style="font-size:18px;">Cancelar</button>
         <button type="button" class="btn btn-primary"  id="descargar" style="font-size:18px;">Recortar <iconify-icon icon="ooui:cut-ltr" style="font-size: 18px;"></iconify-icon></button>
       </div>
