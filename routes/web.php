@@ -20,4 +20,4 @@ Route::get('/', function () {
 
 
 
-Route::get('/editorsmartbook/{page}', 'EditorController@index')->name('index');
+Route::get('/editorsmartbook/{page}/{type}', 'EditorController@index')->name('index');
