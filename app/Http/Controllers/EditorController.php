@@ -21,10 +21,10 @@ class EditorController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($page)
+    public function index($page,$type)
     {
       
 
-        return view('welcome', ['pages' => $page]);
+        return view('welcome', ['pages' => $page,'type'=>$type]);
     }
 }

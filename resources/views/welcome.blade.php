@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="js/jquery.flippage.min.js"></script>
-  <script src="js/html2canvas.js"></script>
+  <script src="{{ URL::to('/') }}/js/jquery.flippage.min.js"></script>
+  <script src="{{ URL::to('/') }}/js/html2canvas.js"></script>
 
  
-  <link href="css/jquery.flippage.css" type="text/css" rel="stylesheet" />
+  <link href="{{ URL::to('/') }}/css/jquery.flippage.css" type="text/css" rel="stylesheet" />
   <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
   <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
@@ -38,6 +38,8 @@
    var el_color4 = "#ff0000";
 
    var colorText;
+
+   var urlRaiz="{{ URL::to('/') }}";
 
    
 
@@ -100,6 +102,8 @@
       if ( event.target.className == "zona-de-soltar"  ) {
           // reestablece el valor inicial para el background
           event.target.style.background = "";
+
+          //event.target.style.border = "";
           // elimina el elemento arrastrado del del elemento padre
 
           console.log(event.target);
@@ -433,15 +437,15 @@ button.btn-settings:active {
 }
 
 .mascara1 {
-  -webkit-mask-image: url('../img/mascaras/1.png');
-  mask-image: url('../img/mascaras/1.png');
+  -webkit-mask-image: url("{{ URL::to('/') }}/img/mascaras/1.png");
+  mask-image: url("{{ URL::to('/') }}/img/mascaras/1.png");
   object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
 
 }
 
 .mascara2 {
-  -webkit-mask-image: url('../img/mascaras/2.png');
-  mask-image: url('../img/mascaras/2.png');
+  -webkit-mask-image: url("{{ URL::to('/') }}/img/mascaras/2.png");
+  mask-image: url("{{ URL::to('/') }}/img/mascaras/2.png");
   object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
 
 }
@@ -494,16 +498,36 @@ button.btn-settings:active {
 
       });
 
+      var validadPages={{ $pages }};
+
+      //alert(validadPages);
+
+
       
       var decremento=0;
 
       var incrementoAux=0;
 
+      var myTimeout = setTimeout(myGreeting, 2000);
+
+      function myGreeting() {
+          
+            for(i=0;i<validadPages;i++){
+
+              //alert(i);
+              $("#agregar")[0].click();
+
+            }
+        }
+
+
+      var tipo="{{ $type }}";
+
+
 
       $("#agregar").click(function(){
 
-
-
+      
         if(incremento>0){
 
           
@@ -526,26 +550,71 @@ button.btn-settings:active {
         }
 
 
-        $("#paginador").css("display","");
+       // $("#paginador").css("display","");
 
-        $(".pagination").append('<li class="page-item" ><a class="page-link" id="hijo'+incremento+'">'+incremento+'</a></li>');
+       //$(".pagination").append('<li class="page-item" ><a class="page-link" id="hijo'+incremento+'">'+incremento+'</a></li>');
         //$("#hijo"+incremento).addClass("fondoMini");
 
 
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'">'+incrementoAux+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px"></div><div class="zona-de-soltar" style="height:140px"></div></div></div>');
+        ///##################################CUADRADOS###############################################
+
+        if(tipo=="c"){
 
 
-        $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'">'+incremento+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px"></div><div class="zona-de-soltar" style="height:140px"></div></div></div>');
+        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'">'+incrementoAux+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+
+
+        $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'">'+incremento+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+
+
+
+        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vista"+incremento+"' class='vistasp'><img src='"+urlRaiz+"/img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
+
+           
+          }
+
+
+          ///##############################VERTICALES################################################
+
+           if(tipo=="v"){
+
+
+        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'">'+incrementoAux+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
+
+
+        $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'">'+incremento+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
+
+
+
+        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vista"+incremento+"' class='vistasp'><img src='"+urlRaiz+"/img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
+
+           
+          }
 
 
 
 
-        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;' id='vista"+incremento+"'><img src='../img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
 
 
+
+          if(incremento==validadPages){
+
+            $("#vista"+1).addClass("fondoMini");
+            
+
+
+          }
+    
+
+             
+
+        
 
 
       });
+
+
+
 
      $("#id_select2_example2").change(function(){
 
@@ -615,49 +684,164 @@ button.btn-settings:active {
 
           resta=incremento-1;
 
-          $("#padre"+incremento).css("display","none");
-          $("#page1").css("display","none");
-          //$("#atras").prop( "disabled", false);
         }
 
-        incremento=incremento+1;
-        incrementoAux=incremento+1;
+        //alert(valor);
 
-        if(incremento==1){
-
-          $("#page1").css("display","");
-        }
-
+        if(valor=="plantilla1"){
+          $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div>');
        
+         $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div>');
 
-        switch (valor) {
-              case 'plantilla1':
-                plantillaOk = '<div class="zona-de-soltar fondo punteado" style="width:100%;height:325px;border:2;border-color: coral;background-color: #fff;text-align: center;" id="padre'+incremento+'"><div class="row"><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div></div><div class="row"><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div><div class="col-sm-6" style="height:150px;"><div class="zona-de-soltar"></div></div></div></div>';
-                break;
-              case 'plantilla2':
-                plantillaOk = "otra plantilla";
-                break;
-              case 'plantilla3':
-                 plantillaOk = "otra plantilla";
-                break;
-             
-        }
-
-
-        $("#contenedorpages").append(plantillaOk);
-
-        $("#paginador").css("display","");
-
-        $(".pagination").append('<li class="page-item" ><a class="page-link" id="hijo'+incremento+'">'+incremento+'</a></li>');
+          }
 
 
 
-        // alert(plantillaOk);
+         if(valor=="plantilla2"){
+          $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
+       
+         $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
+
+          }
+
+          if(valor=="plantilla4"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla5"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar"  style="height:250px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:180px;margin-top:-120px!important;width:50%;margin:auto;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:180px;margin-top:-120px!important;width:50%;margin:auto;border-style:dotted"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla6"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:220px;margin-top:105px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:220px;margin-top:105px;border-style:dotted"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla7"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted;width:50%"></div><div class="zona-de-soltar" style="height:190px;margin-top:-250px;border-style:dotted;width:50%;float:right"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted;width:50%"></div><div class="zona-de-soltar" style="height:190px;margin-top:-250px;border-style:dotted;width:50%;float:right"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla8"){
+
+            $("#padre"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin:auto;width:50%;margin:26%"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin:auto;width:50%;margin:26%"></div></div></div>');
+
+          }
+
+
+          //############ la 9 pendiente
+
+
+           if(valor=="plantilla10"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla11"){
+
+            $("#padre"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:30px;border-style:dotted;margin:auto;width:80%;margin:12%"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:30px;border-style:dotted;margin:auto;width:80%;margin:12%"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla12"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-5"><div class="zona-de-soltar" style="height:180px;margin-top:30px;border-style:dotted;margin-left:70px"></div><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin-left:70px"></div></div><div class="col-sm-7"><div class="zona-de-soltar" style="height:416px;margin-top:10px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-5"><div class="zona-de-soltar" style="height:180px;margin-top:30px;border-style:dotted;margin-left:70px"></div><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin-left:70px"></div></div><div class="col-sm-7"><div class="zona-de-soltar" style="height:416px;margin-top:10px;border-style:dotted"></div></div></div>');
+
+          }
+
+
+            if(valor=="plantilla13"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:230px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:140px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:230px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:140px;border-style:dotted"></div></div></div>');
+
+          }
+
+
+           if(valor=="plantilla14"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:280px;margin-top:80px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:280px;margin-top:80px;border-style:dotted"></div></div></div>');
+
+          }
+
+            if(valor=="plantilla15"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:110px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:200px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:110px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:200px;border-style:dotted"></div></div></div>');
+
+          }
+
+
+          //############# la 16 pendiente
+
+            if(valor=="plantilla17"){
+
+            $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div></div>');
+
+
+            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div></div>');
+
+          }
 
 
 
 
 
+
+
+
+          
+
+
+
+
+
+          
+     
 
 
       });
@@ -1210,7 +1394,6 @@ $(document).ready(function(){
 <div class="container" style="width:100% !important;">
 
 
-{{ $pages }}
 
 
   <div class="btn-toolbar">
@@ -1314,23 +1497,23 @@ $(document).ready(function(){
   <!--label>Plantilla</label-->
   <select id="id_select2_example" style="width:150px;">
     <option value="2">Seleccionar</option>
-    <option data-img_src="../img/plantillas/plantilla1.PNG" value="plantilla1"></option>
-    <option data-img_src="../img/plantillas/plantilla2.PNG" value="plantilla2"></option>
-    <option data-img_src="../img/plantillas/plantilla3.PNG" value="plantilla3"></option>
-    <option data-img_src="../img/plantillas/plantilla4.PNG" value="plantilla4"></option>
-    <option data-img_src="../img/plantillas/plantilla5.PNG" value="plantilla5"></option>
-    <option data-img_src="../img/plantillas/plantilla6.PNG" value="plantilla6"></option>
-    <option data-img_src="../img/plantillas/plantilla7.PNG" value="plantilla7"></option>
-    <option data-img_src="../img/plantillas/plantilla8.PNG" value="plantilla8"></option>
-    <option data-img_src="../img/plantillas/plantilla9.PNG" value="plantilla9"></option>
-    <option data-img_src="../img/plantillas/plantilla10.PNG" value="plantilla10"></option>
-    <option data-img_src="../img/plantillas/plantilla11.PNG" value="plantilla11"></option>
-    <option data-img_src="../img/plantillas/plantilla12.PNG" value="plantilla12"></option>
-    <option data-img_src="../img/plantillas/plantilla13.PNG" value="plantilla13"></option>
-    <option data-img_src="../img/plantillas/plantilla14.PNG" value="plantilla14"></option>
-    <option data-img_src="../img/plantillas/plantilla15.PNG" value="plantilla15"></option>
-    <option data-img_src="../img/plantillas/plantilla16.PNG" value="plantilla16"></option>
-    <option data-img_src="../img/plantillas/plantilla17.PNG" value="plantilla17"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla1.PNG" value="plantilla1"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla2.PNG" value="plantilla2"></option>
+    
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla4.PNG" value="plantilla4"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla5.PNG" value="plantilla5"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla6.PNG" value="plantilla6"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla7.PNG" value="plantilla7"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla8.PNG" value="plantilla8"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla9.PNG" value="plantilla9"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla10.PNG" value="plantilla10"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla11.PNG" value="plantilla11"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla12.PNG" value="plantilla12"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla13.PNG" value="plantilla13"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla14.PNG" value="plantilla14"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla15.PNG" value="plantilla15"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla16.PNG" value="plantilla16"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla17.PNG" value="plantilla17"></option>
   </select>
 </button>
 
@@ -1341,18 +1524,18 @@ $(document).ready(function(){
   <!--label>Imagen de Fondo</label-->
   <select id="id_select2_example2" style="width:150px;">
     <option value="2">Seleccionar</option>
-    <option data-img_src="../img/fondos/1.jpeg" value="../img/fondos/1.jpeg"></option>
-    <option data-img_src="../img/fondos/2.jpeg" value="../img/fondos/2.jpeg"></option>
-    <option data-img_src="../img/fondos/3.jpeg" value="../img/fondos/3.jpeg"></option>
-    <option data-img_src="../img/fondos/4.jpeg" value="../img/fondos/4.jpeg"></option>
-    <option data-img_src="../img/fondos/5.jpeg" value="../img/fondos/5.jpeg"></option>
-    <option data-img_src="../img/fondos/6.jpeg" value="../img/fondos/6.jpeg"></option>
-    <option data-img_src="../img/fondos/7.jpeg" value="../img/fondos/7.jpeg"></option>
-    <option data-img_src="../img/fondos/8.jpeg" value="../img/fondos/8.jpeg"></option>
-    <option data-img_src="../img/fondos/9.jpeg" value="../img/fondos/9.jpeg"></option>
-    <option data-img_src="../img/fondos/10.jpeg" value="../img/fondos/10.jpeg"></option>
-    <option data-img_src="../img/fondos/11.jpeg" value="../img/fondos/11.jpeg"></option>
-    <option data-img_src="../img/fondos/12.jpeg" value="../img/fondos/12.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/1.jpeg" value="{{ URL::to('/') }}/img/fondos/1.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/2.jpeg" value="{{ URL::to('/') }}/img/fondos/2.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/3.jpeg" value="{{ URL::to('/') }}/img/fondos/3.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/4.jpeg" value="{{ URL::to('/') }}/img/fondos/4.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/5.jpeg" value="{{ URL::to('/') }}/img/fondos/5.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/6.jpeg" value="{{ URL::to('/') }}/img/fondos/6.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/7.jpeg" value="{{ URL::to('/') }}/img/fondos/7.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/8.jpeg" value="{{ URL::to('/') }}/img/fondos/8.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/9.jpeg" value="{{ URL::to('/') }}/img/fondos/9.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/10.jpeg" value="{{ URL::to('/') }}/img/fondos/10.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/11.jpeg" value="{{ URL::to('/') }}/img/fondos/11.jpeg"></option>
+    <option data-img_src="{{ URL::to('/') }}/img/fondos/12.jpeg" value="{{ URL::to('/') }}/img/fondos/12.jpeg"></option>
     
   </select>
 </button>
@@ -1396,7 +1579,7 @@ $(document).ready(function(){
       </div>
 
       <div class="col-sm-4">
-        <div id="page1" style="width: 450;height: 450px;background-color: #9A9D9C;margin:10px 10px 0 0 ;margin-right: -15px;"></div>
+        <div id="page1" style="width: 450;height: 450px;margin:10px 10px 0 0 ;margin-right: -15px;"></div>
 
 
       </div>
@@ -1553,9 +1736,9 @@ $(document).ready(function(){
 
             <select id="id_select2_example3" style="width:150px;">
               <option value="2">Seleccionar</option>
-              <option data-img_src="../img/mascaras/ninguna.png" value="0"></option>
-              <option data-img_src="../img/mascaras/1.png" value="1"></option>
-              <option data-img_src="../img/mascaras/2.png" value="2"></option>
+              <option data-img_src="{{ URL::to('/') }}/img/mascaras/ninguna.png" value="0"></option>
+              <option data-img_src="{{ URL::to('/') }}/img/mascaras/1.png" value="1"></option>
+              <option data-img_src="{{ URL::to('/') }}/img/mascaras/2.png" value="2"></option>
               
               
             </select>
@@ -1588,14 +1771,14 @@ $(document).ready(function(){
       <div class="modal-body">
 
           <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="margin-top:30px;">
              <form method='post' action='' enctype="multipart/form-data" style="display:none;">
                <input type="file" id='files' name="file1" multiple><br>
               
             </form>
-              <button type="button" class="btn btn-default"><img src="../img/logos_carga/facebook.png" width="60"></button>
-              <button type="button" class="btn btn-default"><img src="../img/logos_carga/instagram.jpg" width="60"></button>
-              <button type="button" class="btn btn-default" id="local"><img src="../img/logos_carga/local.jpg" width="57"></button>
+              <button type="button" class="btn btn-default"><img src="{{ URL::to('/') }}/img/logos_carga/facebook.png" width="60"></button>
+              <button type="button" class="btn btn-default"><img src="{{ URL::to('/') }}/img/logos_carga/instagram.jpg" width="60"></button>
+              <button type="button" class="btn btn-default" id="local"><img src="{{ URL::to('/') }}/img/logos_carga/local.jpg" width="57"></button>
 
               
               
