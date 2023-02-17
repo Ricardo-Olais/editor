@@ -517,8 +517,38 @@ button.btn-settings:active {
               //alert(i);
               $("#agregar")[0].click();
 
+              validad=i+1;
+
+             // console.log(validadPages);
+
+
+               if(validad==validadPages){
+
+                reversa();
+               }
+
             }
         }
+
+
+       function reversa() {
+        
+            var i = validadPages;
+            while (i--) {
+                
+                if(i>0){
+
+                  $("#atras")[0].click();
+
+                 // console.log(i);
+                }
+                
+            }
+        }
+
+
+
+
 
 
       var tipo="{{ $type }}";
@@ -561,10 +591,21 @@ button.btn-settings:active {
         if(tipo=="c"){
 
 
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'">'+incrementoAux+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+
+        if(incremento==1){
+            $("#page1").append('<div class="zona-de-soltar fondo2" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center;background-color:#BCC2C2;" id="padre11'+incremento+'"></div>');
 
 
-        $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'">'+incremento+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+        }else{
+
+          $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+
+
+        }
+
+
+        
 
 
 
@@ -579,10 +620,25 @@ button.btn-settings:active {
            if(tipo=="v"){
 
 
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'">'+incrementoAux+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
+        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
+
+        if(incremento==1){
+
+            $("#page1").append('<div class="zona-de-soltar fondo2" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center;background-color:#BCC2C2;" id="padre11'+incremento+'"></div>');
+
+        }else{
+
+           
 
 
-        $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'">'+incremento+'<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
+            $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 3px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
+
+
+
+        }
+
+
+       
 
 
 
@@ -699,8 +755,13 @@ button.btn-settings:active {
 
          if(valor=="plantilla2"){
           $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
+
+          if(incremento>1){
+
+             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
+          }
        
-         $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
+        
 
           }
 
@@ -709,7 +770,10 @@ button.btn-settings:active {
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div></div></div>');
 
 
+            if(incremento>1){
+
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div></div></div>');
+            }
 
           }
 
@@ -718,8 +782,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar"  style="height:250px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:180px;margin-top:-120px!important;width:50%;margin:auto;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:180px;margin-top:-120px!important;width:50%;margin:auto;border-style:dotted"></div></div></div>');
+             }
 
           }
 
@@ -728,8 +793,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:220px;margin-top:105px;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:220px;margin-top:105px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
@@ -738,8 +804,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted;width:50%"></div><div class="zona-de-soltar" style="height:190px;margin-top:-250px;border-style:dotted;width:50%;float:right"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted;width:50%"></div><div class="zona-de-soltar" style="height:190px;margin-top:-250px;border-style:dotted;width:50%;float:right"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
@@ -748,8 +815,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin:auto;width:50%;margin:26%"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin:auto;width:50%;margin:26%"></div></div></div>');
+          }
 
           }
 
@@ -761,8 +829,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div></div>');
+          }
 
           }
 
@@ -771,8 +840,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:30px;border-style:dotted;margin:auto;width:80%;margin:12%"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:30px;border-style:dotted;margin:auto;width:80%;margin:12%"></div></div></div>');
+          }
 
           }
 
@@ -781,8 +851,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-5"><div class="zona-de-soltar" style="height:180px;margin-top:30px;border-style:dotted;margin-left:70px"></div><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin-left:70px"></div></div><div class="col-sm-7"><div class="zona-de-soltar" style="height:416px;margin-top:10px;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-5"><div class="zona-de-soltar" style="height:180px;margin-top:30px;border-style:dotted;margin-left:70px"></div><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin-left:70px"></div></div><div class="col-sm-7"><div class="zona-de-soltar" style="height:416px;margin-top:10px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
@@ -791,8 +862,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:230px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:140px;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:230px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:140px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
@@ -801,8 +873,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:280px;margin-top:80px;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:280px;margin-top:80px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
@@ -810,8 +883,10 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:110px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:200px;border-style:dotted"></div></div></div>');
 
+            if(incremento>1){
 
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:110px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:200px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
@@ -822,8 +897,9 @@ button.btn-settings:active {
 
             $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div></div>');
 
-
+            if(incremento>1){
             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div></div>');
+          }
 
           }
 
