@@ -7,6 +7,7 @@
   <meta name="google" value="notranslate">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="{{ URL::to('/') }}/js/jquery.flippage.min.js"></script>
   <script src="{{ URL::to('/') }}/js/html2canvas.js"></script>
@@ -23,10 +24,28 @@
   <link rel="stylesheet" href="https://parzibyte.github.io/ejemplos-javascript/recortar-imagen/css/cropper.min.css">
 
   <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ <script src="{{ URL::to('/') }}/js/jquery.blockUI.production.js"></script>
+
+
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+
+      /*$.blockUI({ css: {border: 'none','z-index': '5000',padding: '15px', backgroundColor: '#000', '-webkit-border-radius': '10px','-moz-border-radius': '10px',opacity: 1, color: '#fff'} }); setTimeout($.unblockUI, 3000); */
+
+
+  });
+
+
+</script>
+
 
 
   <script type="text/javascript">
@@ -42,6 +61,8 @@
    var colorText;
 
    var urlRaiz="{{ URL::to('/') }}";
+
+
 
    
 
@@ -78,11 +99,11 @@
 
   document.addEventListener("dragenter", function( event ) {
       // comprueba si el event.target es una zona de soltar  
-      if ( event.target.className == "zona-de-soltar" ) {
+       if ( event.target.className == "zona-de-soltar" || event.target.className=="zona-de-soltar areacentro" || event.target.className=="zona-de-soltar area1plantilla1" || event.target.className=="zona-de-soltar area2plantilla1" || event.target.className=="zona-de-soltar area3plantilla1" || event.target.className=="zona-de-soltar area1plantilla2" || event.target.className=="zona-de-soltar area1plantilla3" || event.target.className=="zona-de-soltar area2plantilla3" || event.target.className=="zona-de-soltar area3plantilla3" || event.target.className=="zona-de-soltar area1plantilla4" || event.target.className=="zona-de-soltar area2plantilla4" || event.target.className=="zona-de-soltar area1plantilla5" || event.target.className=="zona-de-soltar area2plantilla5" || event.target.className=="zona-de-soltar area1plantilla10" || event.target.className=="zona-de-soltar area2plantilla10" || event.target.className=="zona-de-soltar area1plantilla11" || event.target.className=="zona-de-soltar area2plantilla11" || event.target.className=="zona-de-soltar area1plantilla12" || event.target.className=="zona-de-soltar area2plantilla12" || event.target.className=="zona-de-soltar area3plantilla12" || event.target.className=="zona-de-soltar area1plantilla13" || event.target.className=="zona-de-soltar area2plantilla13" || event.target.className=="zona-de-soltar area3plantilla13" || event.target.className=="zona-de-soltar area4plantilla13" || event.target.className=="zona-de-soltar area1plantilla14" || event.target.className=="zona-de-soltar area2plantilla14" || event.target.className=="zona-de-soltar area1plantilla15" || event.target.className=="zona-de-soltar area2plantilla15" || event.target.className=="zona-de-soltar area3plantilla15" || event.target.className=="zona-de-soltar area1plantilla16" || event.target.className=="zona-de-soltar area2plantilla16") { //area1plantilla16
         // y di lo és cambia el color de fondo
           event.target.style.background = "#CED2D1";
 
-          console.log(event.target.style.height);
+          //console.log(event.target.style.height);
 
 
       }
@@ -91,7 +112,7 @@
 
   document.addEventListener("dragleave", function( event ) {
       // comprueba si el event.target es una zona de soltar  
-      if ( event.target.className == "zona-de-soltar"  ) {
+         if ( event.target.className == "zona-de-soltar" || event.target.className=="zona-de-soltar areacentro" || event.target.className=="zona-de-soltar area1plantilla1" || event.target.className=="zona-de-soltar area2plantilla1" || event.target.className=="zona-de-soltar area3plantilla1" || event.target.className=="zona-de-soltar area1plantilla2" || event.target.className=="zona-de-soltar area1plantilla3" || event.target.className=="zona-de-soltar area2plantilla3" || event.target.className=="zona-de-soltar area3plantilla3" || event.target.className=="zona-de-soltar area1plantilla4" || event.target.className=="zona-de-soltar area2plantilla4" || event.target.className=="zona-de-soltar area1plantilla5" || event.target.className=="zona-de-soltar area2plantilla5" || event.target.className=="zona-de-soltar area1plantilla10" || event.target.className=="zona-de-soltar area2plantilla10" || event.target.className=="zona-de-soltar area1plantilla11" || event.target.className=="zona-de-soltar area2plantilla11" || event.target.className=="zona-de-soltar area1plantilla12" || event.target.className=="zona-de-soltar area2plantilla12" || event.target.className=="zona-de-soltar area3plantilla12" || event.target.className=="zona-de-soltar area1plantilla13" || event.target.className=="zona-de-soltar area2plantilla13" || event.target.className=="zona-de-soltar area3plantilla13" || event.target.className=="zona-de-soltar area4plantilla13" || event.target.className=="zona-de-soltar area1plantilla14" || event.target.className=="zona-de-soltar area2plantilla14" || event.target.className=="zona-de-soltar area1plantilla15" || event.target.className=="zona-de-soltar area2plantilla15" || event.target.className=="zona-de-soltar area3plantilla15" || event.target.className=="zona-de-soltar area1plantilla16" || event.target.className=="zona-de-soltar area2plantilla16") {  //
         // y si lo és, reestablece el valor inicial
           event.target.style.background = "";
 
@@ -104,8 +125,10 @@
       // Si el elemento arrastrado es un link, este se abre en una nueve página.
       // Para que esto no pase hay que utilizar: 
       event.preventDefault();
+
+     // alert(event.target.className);
       // comprueba si el event.target es una zona de soltar
-      if ( event.target.className == "zona-de-soltar"  ) {
+     if ( event.target.className == "zona-de-soltar" || event.target.className=="zona-de-soltar areacentro" || event.target.className=="zona-de-soltar area1plantilla1" || event.target.className=="zona-de-soltar area2plantilla1" || event.target.className=="zona-de-soltar area3plantilla1" || event.target.className=="zona-de-soltar area1plantilla2" || event.target.className=="zona-de-soltar area1plantilla3" || event.target.className=="zona-de-soltar area2plantilla3" || event.target.className=="zona-de-soltar area3plantilla3" || event.target.className=="zona-de-soltar area1plantilla4" || event.target.className=="zona-de-soltar area2plantilla4" || event.target.className=="zona-de-soltar area1plantilla5" || event.target.className=="zona-de-soltar area2plantilla5" || event.target.className=="zona-de-soltar area1plantilla10" || event.target.className=="zona-de-soltar area2plantilla10" || event.target.className=="zona-de-soltar area1plantilla11" || event.target.className=="zona-de-soltar area2plantilla11" || event.target.className=="zona-de-soltar area1plantilla12" || event.target.className=="zona-de-soltar area2plantilla12" || event.target.className=="zona-de-soltar area3plantilla12" || event.target.className=="zona-de-soltar area1plantilla13" || event.target.className=="zona-de-soltar area2plantilla13" || event.target.className=="zona-de-soltar area3plantilla13" || event.target.className=="zona-de-soltar area4plantilla13" || event.target.className=="zona-de-soltar area1plantilla14" || event.target.className=="zona-de-soltar area2plantilla14" || event.target.className=="zona-de-soltar area1plantilla15" || event.target.className=="zona-de-soltar area2plantilla15" || event.target.className=="zona-de-soltar area3plantilla15" || event.target.className=="zona-de-soltar area1plantilla16" || event.target.className=="zona-de-soltar area2plantilla16") {
           // reestablece el valor inicial para el background
          
           event.target.style.background = "";
@@ -118,7 +141,7 @@
 
         // elementoArrastrado.parentNode.removeChild( elementoArrastrado );
 
-         console.log(event.target);
+        // console.log(event.target);
 
          event.target.appendChild(elementoArrastrado);
 
@@ -194,7 +217,9 @@ function actualizar(event) {
   
   console.log(el_color);
 
-  $(".fondo").css("background-color",el_color);
+  
+
+  $(".trabajo").css("background-color",el_color);
 
   }
 
@@ -279,11 +304,7 @@ width: 900px !important;
 
   .zona-de-soltar {
     //flex:0 0 100px;
-    width: 100%;
-    height: 80px;
-    //background: #000;
-    padding: 10px;
-    margin:10px 10px 60px ;
+   
 
   }
 
@@ -424,7 +445,7 @@ button.btn-settings:active {
 .modal-header {
   height:30px;
   padding: 20px;
-  background-color:#18456b;
+  background-color:#000;
   color:white;
 }
 .modal-title {
@@ -471,7 +492,7 @@ button.btn-settings:active {
 
 
     function toggleZoomScreen() {
-        document.body.style.zoom = "86%";
+        document.body.style.zoom = "90%";
     }
 
 
@@ -564,18 +585,37 @@ button.btn-settings:active {
 
       var tipo="{{ $type }}";
 
+      $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vistaPotada' class='vistasPortadavscontra'><img src='"+urlRaiz+"/img/libro_pag2.jpg' width=30><br><center><b style='text-align:center;'>Portada</b></center></td>");
+
+
+      $("#vistaPotada").click(function(){
+
+          $("#element-to-print-portada").css("display","");
+          $("#element-to-print").css("display","none");
+
+
+      });
+
+     
+
+
+
 
 
       $("#agregar").click(function(){
 
+       // alert(incremento);
+
       
         if(incremento>0){
+
+           $("#atras").prop( "disabled", false);
 
           
           resta=incremento-1;
 
-          $("#padre11"+incremento).css("display","none");
-          $("#padre"+incremento).css("display","none");
+          $("#cuadrado"+incremento).css("display","none");
+        //  $("#padre"+incremento).css("display","none");
          // $("#page1").css("display","none");
 
           $("#hijo"+incremento).removeClass("fondoMini");
@@ -591,77 +631,24 @@ button.btn-settings:active {
         }
 
 
-       // $("#paginador").css("display","");
-
-       //$(".pagination").append('<li class="page-item" ><a class="page-link" id="hijo'+incremento+'">'+incremento+'</a></li>');
-        //$("#hijo"+incremento).addClass("fondoMini");
-
-
-        ///##################################CUADRADOS###############################################
-
         if(tipo=="c"){
 
+        $(".inicial").append("<div id= 'cuadrado"+incremento+"' class= 'trabajo '><div class= 'zona-de-soltar'></div>Página "+incremento+"</div>");
 
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 5px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
+        }
 
-        if(incremento==1){
-            $("#page1").append('<div class="zona-de-soltar fondo2" style="width:100%;height:450px;border-style:solid;border-width: 5px;border-color:red;background-color:#fff;text-align:center;background-color:#BCC2C2;" id="padre11'+incremento+'"></div>');
+        if(tipo=="v"){
 
-
-        }else{
-
-          $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:450px;border-style:solid;border-width: 5px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:240px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:140px;border-style: dotted;"></div></div></div>');
-
+        $(".inicial").append("<div id= 'cuadrado"+incremento+"' class= 'trabajoVertical'><div class= 'zona-de-soltar-vertical'></div>Página "+incremento+" Vertical</div>");
 
         }
 
 
-        
+          if(tipo=="h"){
 
-
-
-        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vista"+incremento+"' class='vistasp'><img src='"+urlRaiz+"/img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
-
-           
-          }
-
-
-          ///##############################VERTICALES################################################
-
-           if(tipo=="v"){
-
-
-        $("#contenedorpages").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 11.33px;border-color:red;background-color:#fff;text-align:center" id="padre'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
-
-        if(incremento==1){
-
-            $("#page1").append('<div class="zona-de-soltar fondo2" style="width:100%;height:500px;border-style:solid;border-width: 11.33px;border-color:red;background-color:#fff;text-align:center;background-color:#BCC2C2;" id="padre11'+incremento+'"></div>');
-
-        }else{
-
-           
-
-
-            $("#page1").append('<div class="zona-de-soltar fondo" style="width:100%;height:500px;border-style:solid;border-width: 11.33px;border-color:red;background-color:#fff;text-align:center" id="padre11'+incremento+'"><div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div></div>');
-
-
+        $(".inicial").append("<div id= 'cuadrado"+incremento+"' class= 'trabajoHorizontal'><div class= 'zona-de-soltar-horizontal'></div>Página "+incremento+" horizontal</div>");
 
         }
-
-
-       
-
-
-
-        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vista"+incremento+"' class='vistasp'><img src='"+urlRaiz+"/img/libro_pag2.jpg' width=50><br><center><b style='text-align:center;'>"+incremento+" - "+incrementoAux+"</b></center></td>");
-
-           
-          }
-
-
-
-
-
 
 
           if(incremento==validadPages){
@@ -671,7 +658,19 @@ button.btn-settings:active {
 
 
           }
-    
+
+          $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vista"+incremento+"' class='vistasp'><img src='"+urlRaiz+"/img/hoja.png' width=30 ><br><center><b style='text-align:center;'>"+incremento+"</b></center></td>");
+
+
+            $(".vistasp").click(function(){
+
+         
+
+          $("#element-to-print-portada").css("display","none");
+          $("#element-to-print").css("display","");
+
+
+      });
 
              
 
@@ -681,14 +680,16 @@ button.btn-settings:active {
       });
 
 
+    
+
 
 
      $("#id_select2_example2").change(function(){
 
          var imgfondo=$(this).val();
         // alert(imgfondo);
-         $(".fondo").css("background-image","url("+imgfondo+")");
-         $(".fondo").css("background-size","cover");
+         $(".trabajo").css("background-image","url("+imgfondo+")");
+         $(".trabajo").css("background-size","cover");
          //alert(incremento);
 
       });
@@ -753,76 +754,62 @@ button.btn-settings:active {
 
         }
 
+
+
+
+
         //alert(valor);
 
         if(valor=="plantilla1"){
-          $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div>');
-       
-         $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:300px;margin-top:30px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:180px;border-style: dotted;"></div></div>');
+         
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla1" style="width: 60mm;height:50mm;margin-top:25mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla1" style="width: 40mm;height:40mm;float: right;margin-top: -67mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla1" style="width: 40mm;height:40mm;float: right;margin-top: -20mm;border-style: dotted;"></div>');
 
           }
 
 
 
          if(valor=="plantilla2"){
-          $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
 
-          if(incremento>1){
+          $("#cuadrado"+incremento).html(' <div class="zona-de-soltar area1plantilla2" style="width: 93mm;height:93mm;margin-top:5mm;margin-left: 5mm;border-style: dotted;"></div>');
 
-             $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"  ><div class="zona-de-soltar" style="height:410px;margin-top: 10px;border-style: dotted;"></div></div></div>');
-          }
-       
         
 
           }
 
           if(valor=="plantilla4"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla3" style="width: 60mm;height:90mm;margin-top:7mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla3" style="width: 40mm;height:40mm;float: right;margin-top: -90mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla3" style="width: 40mm;height:40mm;float: right;margin-top: -40mm;border-style: dotted;"></div>');
 
-
-            if(incremento>1){
-
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style: dotted;"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style: dotted;"></div></div></div>');
-            }
 
           }
 
 
            if(valor=="plantilla5"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar"  style="height:250px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:180px;margin-top:-120px!important;width:50%;margin:auto;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla4" style="width: 94mm;height:60mm;margin-top:7mm;margin-left: 5mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla4" style="width: 40mm;height:40mm;margin-top: -20mm;margin-left: 35mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:180px;margin-top:-120px!important;width:50%;margin:auto;border-style:dotted"></div></div></div>');
-             }
 
           }
 
 
            if(valor=="plantilla6"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:220px;margin-top:105px;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla5" style="width: 55mm;height:90mm;margin-top:7mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla5" style="width: 45mm;height:68mm;float: right;margin-top: -80mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:220px;margin-top:105px;border-style:dotted"></div></div></div>');
-          }
-
-          }
-
-
-           if(valor=="plantilla7"){
-
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted;width:50%"></div><div class="zona-de-soltar" style="height:190px;margin-top:-250px;border-style:dotted;width:50%;float:right"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div></div></div>');
-
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted;width:50%"></div><div class="zona-de-soltar" style="height:190px;margin-top:-250px;border-style:dotted;width:50%;float:right"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:120px;margin-top:10px;border-style:dotted"></div></div></div>');
-          }
 
           }
 
 
            if(valor=="plantilla8"){
+
+        
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar areacentro" style="width: 50mm;height:50mm;margin-top: 100px;margin-left: 100px;border-style:dotted;"></div></div>');
+
+
+          }
+
+
+          /* if(valor=="plantilla8"){
 
             $("#padre"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin:auto;width:50%;margin:26%"></div></div></div>');
 
@@ -830,7 +817,7 @@ button.btn-settings:active {
             $("#padre11"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin:auto;width:50%;margin:26%"></div></div></div>');
           }
 
-          }
+          }*/
 
 
           //############ la 9 pendiente
@@ -838,66 +825,51 @@ button.btn-settings:active {
 
            if(valor=="plantilla10"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div></div>');
+            $("#cuadrado"+incremento).html(' <div class="zona-de-soltar area1plantilla10" style="width: 49mm;height:90mm;margin-top:7mm;border-style:dotted;"></div><div class="zona-de-soltar area2plantilla10" style="width: 49mm;height:90mm;float: right;margin-top: -90mm;border-style:dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:410px;margin-top:10px;border-style:dotted;margin:auto"></div></div></div>');
-          }
 
           }
 
 
            if(valor=="plantilla11"){
 
-            $("#padre"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:30px;border-style:dotted;margin:auto;width:80%;margin:12%"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla11" style="width: 93mm;height:70mm;margin-top:15mm;margin-left: 5mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><center><div class="col-sm-12"><div class="zona-de-soltar" style="height:250px;margin-top:30px;border-style:dotted;margin:auto;width:80%;margin:12%"></div></div></div>');
-          }
+          
 
           }
 
 
            if(valor=="plantilla12"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-5"><div class="zona-de-soltar" style="height:180px;margin-top:30px;border-style:dotted;margin-left:70px"></div><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin-left:70px"></div></div><div class="col-sm-7"><div class="zona-de-soltar" style="height:416px;margin-top:10px;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla12" style="width: 40mm;height:40mm;margin-top:10mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla12" style="width: 40mm;height:40mm;margin-top:10mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla12" style="width: 60mm;height:90mm;margin-top: -95mm;margin-left:35mm;border-style: dotted;">');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-5"><div class="zona-de-soltar" style="height:180px;margin-top:30px;border-style:dotted;margin-left:70px"></div><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted;margin-left:70px"></div></div><div class="col-sm-7"><div class="zona-de-soltar" style="height:416px;margin-top:10px;border-style:dotted"></div></div></div>');
-          }
+          
 
           }
 
 
             if(valor=="plantilla13"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:230px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:140px;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla13" style="width: 40mm;height:40mm;margin-top:10mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla13" style="width: 40mm;height:40mm;margin-top:1mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla13" style="width: 40mm;height:50mm;margin-top: -81mm;margin-left:55mm;border-style: dotted;"></div><div class="zona-de-soltar area4plantilla13" style="width: 40mm;height:30mm;margin-top:1mm;margin-left:55mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:180px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:230px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:140px;border-style:dotted"></div></div></div>');
-          }
 
           }
 
 
            if(valor=="plantilla14"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:280px;margin-top:80px;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla14" style="width: 40mm;height:50mm;margin-top:10mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla14" style="width: 40mm;height:50mm;margin-top: -15mm;margin-left:55mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:280px;margin-top:80px;border-style:dotted"></div></div></div>');
-          }
+         
 
           }
 
             if(valor=="plantilla15"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:110px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:200px;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla15" style="width: 50mm;height:40mm;margin-top:30mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla15" style="width: 37mm;height:40mm;margin-top: -60mm;margin-left:65mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla15" style="width: 37mm;height:40mm;margin-top: 5mm;margin-left:65mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-6"><div class="zona-de-soltar" style="height:210px;margin-top:110px;border-style:dotted"></div></div><div class="col-sm-6"><div class="zona-de-soltar" style="height:200px;margin-top:10px;border-style:dotted"></div><div class="zona-de-soltar" style="height:200px;border-style:dotted"></div></div></div>');
-          }
+         
 
           }
 
@@ -906,11 +878,9 @@ button.btn-settings:active {
 
             if(valor=="plantilla17"){
 
-            $("#padre"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div></div>');
+            $("#cuadrado"+incremento).html('<div class="zona-de-soltar area1plantilla16" style="width: 95mm;height:45mm;margin-top:5mm;margin-left:5mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla16" style="width: 95mm;height:45mm;margin-top: 5mm;margin-left:5mm;border-style: dotted;"></div>');
 
-            if(incremento>1){
-            $("#padre11"+incremento).html('<div class="row"><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;margin-top:10px;border-style:dotted"></div></div><div class="col-sm-12"><div class="zona-de-soltar" style="height:190px;border-style:dotted"></div></div></div>');
-          }
+          
 
           }
 
@@ -947,15 +917,13 @@ button.btn-settings:active {
           $("#next").prop( "disabled", false);
          // $("#next").attr("disabled",false);
           //$(this).attr("disabled",false);
-          $("#padre11"+incremento).css("display","none");
-          $("#padre"+incremento).css("display","none");
-
-
-            $("#vista"+incremento).removeClass("fondoMini");
+          $("#cuadrado"+incremento).css("display","none");
+          
+          $("#vista"+incremento).removeClass("fondoMini");
 
              incremento=incremento-1;
-            $("#padre11"+incremento).css("display","");
-            $("#padre"+incremento).css("display","");
+            $("#cuadrado"+incremento).css("display","");
+           // $("#padre"+incremento).css("display","");
 
             
 
@@ -991,18 +959,18 @@ button.btn-settings:active {
 
 
 
-           if ( $("#padre"+incremento).length > 0 ) {
+           if ( $("#cuadrado"+incremento).length > 0 ) {
 
 
                 
                // $("#page1").css("display","none");
-                 $("#padre11"+incremento).css("display","");
-                 $("#padre"+incremento).css("display","");
-                 $("#vista"+incremento).addClass("fondoMini");
+                 $("#cuadrado"+incremento).css("display","");
 
+                 $("#vista"+incremento).addClass("fondoMini");
                  
-                  $("#padre11"+decremento).css("display","none");
-                  $("#padre"+decremento).css("display","none");
+                 
+                 
+                  $("#cuadrado"+decremento).css("display","none");
 
 
                   $("#vista"+decremento).removeClass("fondoMini");
@@ -1198,33 +1166,38 @@ $("#rotar").change(function(){
   }
 
 
-  
+  var reader;
+  var base64data;
   $("input[name=file1]").change(function() {
             var names = [];
-            var base64data;
+           
             for (var i = 0; i < $(this).get(0).files.length; ++i) {
 
                url= URL.createObjectURL($(this).get(0).files[i]);
 
 
-                $("#imagenes-album").append('<div class="arrastrable" draggable="true"><img src="'+url+'" width="100%" class="clickable"  style="cursor:pointer;object-fit:cover;width:100%;height:100%;" id="img'+i+'"/></div>');
+
+
+               /*$("#imagenes-album").append('<div class="arrastrable" draggable="true"><img src="'+url+'" width="100%" class="clickable"  style="cursor:pointer;object-fit:cover;width:100%;height:100%;" id="img'+i+'"/></div>');*/
 
 
 
 
-              /*var reader = new FileReader();
-               reader.readAsDataURL($(this).get(0).files[i]); 
+               reader = new FileReader();
+               reader.readAsDataURL($(this).get(0).files[i]);
+
+               //console.log(reader); 
 
 
                   reader.onloadend = function() {
                     base64data = reader.result;        
-                   // console.log(base64data);
+                    console.log(base64data);
 
                     $("#imagenes-album").append('<div class="arrastrable" draggable="true"><img src="'+base64data+'" width="100%" class="clickable"  style="cursor:pointer;object-fit:cover;width:100%;height:100%;" id="img'+i+'"/></div>');
 
 
 
-                 }*/
+                 }
 
       
          
@@ -1329,7 +1302,7 @@ window.onload = function() {
  
 
 
-    $('#cargarImagenes').modal('show'); //para la carga de imagenes
+    //$('#cargarImagenes').modal('show'); //para la carga de imagenes
 
 
     $("#cargaIni").click(function(){
@@ -1371,13 +1344,13 @@ function getPDF() {
 
     var element= document.getElementById("contenedorpages");
 
-    var opt = {
+   var opt = {
             margin: [0, 0, 30, 0], //top, left, buttom, right,
-            filename: 'my_file.pdf',
+            filename: 'albumSmart.pdf',
             image: {type: 'jpeg',quality: 0.98},
-            html2canvas: {dpi: 192, scale: 2, letterRendering: true},
+            html2canvas: {dpi: 300, scale: 1, letterRendering: true},
             pagebreak: {mode: 'avoid-all'},
-            jsPDF: {unit: 'pt', format: 'letter', orientation: 'portrait'}
+            jsPDF: {unit: 'pt', format: 'tabloid', orientation: 'portrait'}
         };
         var worker = html2pdf();
         
@@ -1490,8 +1463,9 @@ $(document).ready(function(){
 
 
 
-  <div class="btn-toolbar">
+  <div class="btn-toolbar" style="margin:auto;text-align: center;">
     <div class="btn-group">
+        <img src="{{ URL::to('/') }}/img/fondo1.jpg" width="60">
         <button type="button" class="btn" data-toggle="tooltip" title="Guardar">
         <iconify-icon icon="material-symbols:save" style="font-size: 24px;"></iconify-icon>
 
@@ -1597,9 +1571,9 @@ $(document).ready(function(){
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla4.PNG" value="plantilla4"></option>
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla5.PNG" value="plantilla5"></option>
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla6.PNG" value="plantilla6"></option>
-    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla7.PNG" value="plantilla7"></option>
+    <!--option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla7.PNG" value="plantilla7"></option-->
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla8.PNG" value="plantilla8"></option>
-    <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla9.PNG" value="plantilla9"></option>
+    <!--option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla9.PNG" value="plantilla9"></option-->
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla10.PNG" value="plantilla10"></option>
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla11.PNG" value="plantilla11"></option>
     <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla12.PNG" value="plantilla12"></option>
@@ -1635,6 +1609,9 @@ $(document).ready(function(){
 </button>
 
 
+<button type="button" class="btn btn-primary" style="margin-top:10px;background-color: black;" id="pdf">Enviar proyecto</button>
+
+
 <button type="button" class="btn">
 
   <!--label>Imagen de Fondo</label-->
@@ -1660,11 +1637,11 @@ $(document).ready(function(){
 
 
     <div class="row">
-      <div class="col-sm-1" style="background-color:#F0F0F0;width:200px; height:500px; overflow: scroll;border-radius: 10px;overflow-x: hidden;" id="imagenes-album" ><!--aqui van las imagenes-->
+      <div class="col-sm-1" style="background-color:#F0F0F0;width:150px; height:600px; overflow: scroll;border-radius: 10px;overflow-x: hidden;" id="imagenes-album" ><!--aqui van las imagenes-->
 
       </div>
 
-      <div class="col-sm-10">
+      <!--div class="col-sm-10">
          <div id="vistasPreviasPadre" style="width:100%;height:80px;background-color:#F0F3F3;overflow: scroll;border-radius: 10px;overflow-y: hidden;">
            <table><tr id="vistasPrevias"></tr></table>
 
@@ -1676,14 +1653,14 @@ $(document).ready(function(){
         <div id="page1" style="width: 450;height: 450px;margin:10px 10px 0 0 ;margin-right: -15px;"></div>
 
 
-      </div>
+      </div-->
 
 
      
 
 
 
-      <div class="col-sm-4" style="padding-right: 0px !important;padding-left: 0px !important;" id="parapdf">
+     
 
       
 
@@ -1709,7 +1686,7 @@ $(document).ready(function(){
 
             incrementoImagen=incrementoImagen+1;
 
-            $("#padre"+incremento).append('<div id="draggable'+incrementoImagen+'" class="ui-widget-content draggable"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;color:red;" class="eliminaText" id="'+incrementoImagen+'"></iconify-icon><textarea  class="campotransparente" rows="1" id="colorText'+incrementoImagen+'"  style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea></div>');
+            $("#cuadrado"+incremento).append('<div id="draggable'+incrementoImagen+'" class="ui-widget-content draggable"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;color:red;" class="eliminaText" id="'+incrementoImagen+'"></iconify-icon><textarea  class="campotransparente" rows="1" id="colorText'+incrementoImagen+'"  style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea></div>');
 
             $( "#draggable"+incrementoImagen).draggable();
 
@@ -1758,17 +1735,501 @@ $(document).ready(function(){
 
 
   </script>
-        <div id="contenedorpages" >
 
-        </div>
-
+     <style type="text/css">
 
 
-          <nav aria-label="Page navigation example" style="display:none;" id="paginador">
-            <ul class="pagination">
-            
-            </ul>
-          </nav>
+ 
+
+
+ .trabajo{
+
+    width: 105mm;
+    height: 105mm;
+    background-color:#fff;
+    border-style:dotted;margin: auto;
+    border-color: red;
+
+
+ }
+
+ .trabajoVertical{
+    width: 105mm;
+    height: 120mm;
+    background-color:#fff;
+    border-style:dotted;margin: auto;
+    border-color: red;
+
+ }
+
+ .zona-de-soltar-vertical{
+
+   width: 105mm;height:120mm;
+  
+
+ }
+
+ .trabajoVertical{
+   outline: red solid 1px;
+   page-break-inside: avoid;
+}
+
+.trabajoHorizontal{
+
+    width: 125mm;
+    height: 105mm;
+    background-color:#fff;
+    border-style:dotted;margin: auto;
+    border-color: red;
+}
+
+
+ .zona-de-soltar-horizontal{
+
+   width: 125mm;height:105mm;
+  
+
+ }
+
+
+
+
+
+
+ .zona-de-soltar{
+
+   width: 105mm;height:105mm;
+  
+
+ }
+
+   .trabajo {
+   outline: red solid 1px;
+   page-break-inside: avoid;
+    }
+    #nextpage1 {
+      page-break-before: always;
+    }
+
+ 
+
+
+</style>
+
+
+  <script type="text/javascript">
+
+$(document).ready(function(){
+
+
+
+
+$("#pdf").click(function(){
+
+
+ $('.zona-de-soltar > img').each(function(index, elemento){
+
+
+    idImagen =  $(elemento).attr("id");
+
+    console.log(index);
+
+
+
+    x =  $(elemento).css("left");
+    y =  $(elemento).css("top");
+    z =  $(elemento).css("z-index");
+ 
+    //alert("Imagen: " + idImagen + " coordenada " + x + "."+y +" Profundidad: " + z);
+  });
+
+  //return false;
+    
+
+
+
+$.blockUI({ css: {border: 'none','z-index': '5000',padding: '15px', backgroundColor: '#000', '-webkit-border-radius': '10px','-moz-border-radius': '10px',opacity: 1, color: '#fff'} }); setTimeout($.unblockUI, 5000); 
+
+//configuraciones de impresión 30 * 30 cuadado pro
+
+$(".trabajo").css("width","293mm");
+$(".trabajo").css("height","290mm");
+
+$(".zona-de-soltar").css("width","293mm");
+$(".zona-de-soltar").css("height","290mm");
+
+$(".trabajo").css("display","");
+
+$(".areacentro").css("width","100mm");
+$(".areacentro").css("height","100mm");
+$(".areacentro").css("margin-top","85mm");
+$(".areacentro").css("margin-left","105mm");
+
+
+
+//#############variables de impresion
+//###plantilla 1
+
+//width: 160mm;height:100mm;margin-top:80mm;
+
+$(".area1plantilla1").css("width","160mm");
+$(".area1plantilla1").css("height","100mm");
+$(".area1plantilla1").css("margin-top","85mm");
+
+//width: 120mm;height:90mm;float: right;margin-top: -150mm;
+
+
+$(".area2plantilla1").css("width","120mm");
+$(".area2plantilla1").css("height","90mm");
+$(".area2plantilla1").css("margin-top","-150mm");
+$(".area2plantilla1").css("float","right");
+
+
+//width: 120mm;height:90mm;float: right;margin-top: -50mm;
+
+$(".area3plantilla1").css("width","120mm");
+$(".area3plantilla1").css("height","90mm");
+$(".area3plantilla1").css("margin-top","-50mm");
+$(".area3plantilla1").css("float","right");
+
+
+//####plantilla 2
+//width: 280mm;height:277mm;margin-top:5mm;margin-left: 5mm;
+$(".area1plantilla2").css("width","280mm");
+$(".area1plantilla2").css("height","277mm");
+$(".area1plantilla2").css("margin-top","5mm");
+$(".area1plantilla2").css("margin-left","5mm");
+
+
+
+//###plantilla3
+
+
+//width: 160mm;height:270mm;margin-top:7mm;
+$(".area1plantilla3").css("width","160mm");
+$(".area1plantilla3").css("height","270mm");
+$(".area1plantilla3").css("margin-top","7mm");
+$(".area1plantilla3").css("margin-left","5mm");
+
+
+//width: 120mm;height:130mm;float: right;margin-top: -270mm;
+
+$(".area2plantilla3").css("width","120mm");
+$(".area2plantilla3").css("height","130mm");
+$(".area2plantilla3").css("margin-top","-270mm");
+$(".area2plantilla3").css("float","right");
+
+
+//width: 120mm;height:130mm;float: right;margin-top: -130mm;
+
+$(".area3plantilla3").css("width","120mm");
+$(".area3plantilla3").css("height","130mm");
+$(".area3plantilla3").css("margin-top","-130mm");
+$(".area3plantilla3").css("float","right");
+
+
+//###plantilla 4
+
+//width: 279mm;height:170mm;margin-top:7mm;margin-left: 5mm;
+
+$(".area1plantilla4").css("width","279mm");
+$(".area1plantilla4").css("height","170mm");
+$(".area1plantilla4").css("margin-top","7mm");
+$(".area1plantilla4").css("margin-left","5mm");
+
+//width: 100mm;height:100mm;margin-top: -40mm;margin-left: 100mm;
+
+$(".area2plantilla4").css("width","100mm");
+$(".area2plantilla4").css("height","100mm");
+$(".area2plantilla4").css("margin-top","-40mm");
+$(".area2plantilla4").css("margin-left","100mm");
+
+
+//plantilla5
+
+//width: 160mm;height:269mm;margin-top:7mm;margin-left:5mm
+$(".area1plantilla5").css("width","160mm");
+$(".area1plantilla5").css("height","269mm");
+$(".area1plantilla5").css("margin-top","7mm");
+$(".area1plantilla5").css("margin-left","5mm");
+
+
+
+//width: 110mm;height:215mm;float: right;margin-top: -240mm;
+
+$(".area2plantilla5").css("width","110mm");
+$(".area2plantilla5").css("height","215mm");
+$(".area2plantilla5").css("margin-top","-240mm");
+$(".area2plantilla5").css("float","right");
+
+
+//#plantilla  10
+
+//width: 140mm;height:275mm;margin-top:7mm;margin-left:5mm
+
+
+$(".area1plantilla10").css("width","140mm");
+$(".area1plantilla10").css("height","275mm");
+$(".area1plantilla10").css("margin-top","7mm");
+$(".area1plantilla10").css("margin-left","5mm");
+
+
+//width: 140mm;height:275mm;float: right;margin-top: -275mm;
+
+$(".area2plantilla10").css("width","140mm");
+$(".area2plantilla10").css("height","275mm");
+$(".area2plantilla10").css("margin-top","-275mm");
+$(".area2plantilla10").css("float","right");
+
+
+//###plantilla 11
+
+//width: 250mm;height:245mm;margin-top:20mm;margin-left: 20mm;border-style: dotted;
+
+$(".area1plantilla11").css("width","250mm");
+$(".area1plantilla11").css("height","245mm");
+$(".area1plantilla11").css("margin-top","20mm");
+$(".area1plantilla11").css("margin-left","20mm");
+
+
+//###plantilla 12 
+$(".area1plantilla12").css("width","250mm");
+$(".area1plantilla12").css("height","245mm");
+$(".area1plantilla12").css("margin-top","20mm");
+$(".area1plantilla12").css("margin-left","20mm");
+
+
+$(".area2plantilla12").css("width","250mm");
+$(".area2plantilla12").css("height","245mm");
+$(".area2plantilla12").css("margin-top","20mm");
+$(".area2plantilla12").css("margin-left","20mm");
+
+$(".area3plantilla12").css("width","250mm");
+$(".area3plantilla12").css("height","245mm");
+$(".area3plantilla12").css("margin-top","20mm");
+$(".area3plantilla12").css("margin-left","20mm");
+
+
+//###plantilla 13
+
+//area2plantilla13
+
+//width: 120mm;height:124mm;margin-top:10mm;margin-left:10mm
+
+$(".area1plantilla13").css("width","117mm");
+$(".area1plantilla13").css("height","124mm");
+$(".area1plantilla13").css("margin-top","10mm");
+$(".area1plantilla13").css("margin-left","20mm");
+
+//width: 120mm;height:124mm;margin-top:5mm;margin-left:10mm
+
+$(".area2plantilla13").css("width","120mm");
+$(".area2plantilla13").css("height","124mm");
+$(".area2plantilla13").css("margin-top","5mm");
+$(".area2plantilla13").css("margin-left","10mm");
+
+//width: 150mm;height:160mm;margin-top: -253mm;margin-left:135mm
+
+
+$(".area3plantilla13").css("width","150mm");
+$(".area3plantilla13").css("height","160mm");
+$(".area3plantilla13").css("margin-top","-253mm");
+$(".area3plantilla13").css("margin-left","135mm");
+
+//width: 150mm;height:89mm;margin-top:4mm;margin-left:135mm
+
+
+$(".area4plantilla13").css("width","150mm");
+$(".area4plantilla13").css("height","89mm");
+$(".area4plantilla13").css("margin-top","4mm");
+$(".area4plantilla13").css("margin-left","135mm");
+
+
+//###plantilla 14
+
+//width: 130mm;height:170mm;margin-top:10mm;margin-left:10mm
+$(".area1plantilla14").css("width","130mm");
+$(".area1plantilla14").css("height","170mm");
+$(".area1plantilla14").css("margin-top","10mm");
+$(".area1plantilla14").css("margin-left","10mm");
+
+//width: 130mm;height:170mm;margin-top: -80mm;margin-left:150mm
+$(".areaplantilla14").css("width","130mm");
+$(".area2plantilla14").css("height","170mm");
+$(".area2plantilla14").css("margin-top","-80mm");
+$(".area2plantilla14").css("margin-left","150mm");
+
+
+//###plantilla 15
+
+//area1plantilla15
+
+//width: 130mm;height:100mm;margin-top:90mm;margin-left:10mm
+
+$(".area1plantilla15").css("width","130mm");
+$(".area1plantilla15").css("height","100mm");
+$(".area1plantilla15").css("margin-top","90mm");
+$(".area1plantilla15").css("margin-left","10mm");
+
+//width: 120mm;height:125mm;margin-top: -170mm;margin-left:150mm
+
+
+$(".area2plantilla15").css("width","120mm");
+$(".area2plantilla15").css("height","125mm");
+$(".area2plantilla15").css("margin-top","-170mm");
+$(".area2plantilla15").css("margin-left","150mm");
+
+//width: 120mm;height:125mm;margin-top: 5mm;margin-left:150mm
+
+
+$(".area3plantilla15").css("width","120mm");
+$(".area3plantilla15").css("height","125mm");
+$(".area3plantilla15").css("margin-top","5mm");
+$(".area3plantilla15").css("margin-left","150mm");
+
+//##plantilla 16
+
+//width: 280mm;height:135mm;margin-top:5mm;margin-left:5mm
+
+$(".area1plantilla16").css("width","280mm");
+$(".area1plantilla16").css("height","135mm");
+$(".area1plantilla16").css("margin-top","5mm");
+$(".area1plantilla16").css("margin-left","5mm");
+
+
+//width: 280mm;height:135mm;margin-top: 5mm;margin-left:5mm
+$(".area2plantilla16").css("width","280mm");
+$(".area2plantilla16").css("height","135mm");
+$(".area2plantilla16").css("margin-top","5mm");
+$(".area2plantilla16").css("margin-left","5mm");
+
+
+
+
+
+
+
+
+
+var element = document.getElementById('element-to-print');
+var opt = {
+            margin: [80, 0, 30, 0], //top, left, buttom, right,
+            filename: 'albumSmart.pdf',
+            image: {type: 'jpeg',quality: 0.98},
+            html2canvas: {dpi: 300, scale: 1},
+            pagebreak: {mode: 'avoid-all'},
+            jsPDF: {unit: 'pt', format: 'tabloid', orientation: 'portrait'} //landscape   portrait
+        };
+        var worker = html2pdf();
+        
+            console.log(worker);
+            worker.set(opt)
+                  .from(element)
+                  .toPdf()
+                  .get('pdf')
+                  .then(function (doc) {
+                      var totalPages = doc.internal.getNumberOfPages();
+                      for (var i=1; i<=totalPages; i++) {
+                          //if (i > 1) {
+                            doc.setPage(i);
+                            doc.setFontSize(10);
+                            doc.text('Página ' + i + ' de ' + totalPages+ " Pedido: 00073635 Fecha : 2023-03-01", (doc.internal.pageSize.getWidth() / 2.3), (doc.internal.pageSize.getHeight() - 0.8));
+
+                            if(i==totalPages){
+                              //setTimeout($.unblockUI,0);
+
+                               location.reload();
+
+                             // window.reload();
+
+                            }
+                            //?????
+                          //}
+                      }
+        
+                 }).save();
+
+            //setTimeout($.unblockUI,0);
+
+    });
+
+});
+
+ 
+
+  </script>
+
+
+    
+
+    <div class="col-sm-10">
+      <!--input type="button" name="pdf" value="PDF" id="pdf"-->
+
+      <div id="vistasPreviasPadre" style="width:100%;height:80px;background-color:#F0F3F3;overflow: scroll;border-radius: 10px;overflow-y: hidden;">
+           <table><tr id="vistasPrevias"></tr></table>
+
+
+         </div>
+
+
+        <!--portada-->
+         <div id="element-to-print-portada" style="display:none;">
+
+          <div class="col-sm-4">
+             <center><span style="color:blue;"> PORTADA</span></center>
+
+              
+            <div id="POR1" class="trabajo">
+
+              <div class="zona-de-soltar areacentro" style="width: 50mm;height:50mm;margin-top: 100px;margin-left: 100px;border-style:dotted;">
+                
+                 <img src="{{ URL::to('/') }}/img/boda9.jpeg" style="cursor:pointer;object-fit:cover;width:100%;height:100%;">
+              </div>
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+          <!--div class="col-sm-1" style="width:10px !important;margin-top: 20px;">
+            <img src="{{ URL::to('/') }}/img/lomo.png" style="height:105mm;width: 20px;margin-left: 52px;">
+          </div-->
+
+
+        
+          <div class="col-sm-4" style="margin-left: 80px;margin-left: -10px;">
+            <center><span style="color:blue;">CONTRA PORTADA</span></center>
+              <div id="POR2" class="trabajo">
+                   <div class="zona-de-soltar">
+                     <img src="{{ URL::to('/') }}/img/boda9.jpeg" style="cursor:pointer;object-fit:cover;width:100%;height:100%;">
+                   </div>
+              </div>
+          </div>
+             
+
+          </div>
+
+
+        <!-- -->
+
+
+    <!--inicio de interiores-->
+    <div id="spacio" style="width:100%;height:20px;"></div>
+     <div id="element-to-print">
+      <div class="inicial">
+
+   
+
+
+    </div>
+
+  </div>
+
+  <!--fin de interiores-->
 
     </div>
 
@@ -1796,7 +2257,7 @@ $(document).ready(function(){
       <div class="modal-body">
          
             <label>Brillo <iconify-icon icon="ph:sparkle" style="font-size: 20px;"></iconify-icon></label>
-            <input type="range" name="brillo" id="brillo" value="200" style="width:200px;">
+            <input type="range" name="brillo" id="brillo" value="100" max="200" style="width:200px;">
 
 
             <label>Contraste <iconify-icon icon="material-symbols:contrast" style="font-size: 20px;"></iconify-icon></label>

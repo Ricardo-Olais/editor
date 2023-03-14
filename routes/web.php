@@ -18,6 +18,14 @@ Route::get('/', function () {
 });
 
 
+Route::get('/plantillas', function () {
+    return view('plantillas');
+});
+
+
 
 
 Route::get('/editorsmartbook/{page}/{type}', 'EditorController@index')->name('index');
+
+
+Route::get('/version2/{page}/{type}', 'EditorController@version2')->name('version2');
