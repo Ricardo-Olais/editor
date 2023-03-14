@@ -27,4 +27,12 @@ class EditorController extends Controller
 
         return view('welcome', ['pages' => $page,'type'=>$type]);
     }
+
+
+    public function version2($page,$type)
+    {
+      
+
+        return view('version2', ['pages' => $page,'type'=>$type]);
+    }
 }
