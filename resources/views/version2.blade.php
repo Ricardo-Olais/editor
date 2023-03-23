@@ -35,6 +35,8 @@
 
 
 <script type="text/javascript">
+
+  var token="{{ csrf_token() }}";
   
   $(document).ready(function(){
 
@@ -65,7 +67,8 @@
 
 
 
-    var tipo="{{ $type }}";
+   var tipo="{{ $type }}";
+   var medida="{{ $medida }}";
 
     var jr;
 
@@ -2178,7 +2181,7 @@ $(document).ready(function(){
  }
 
    .trabajo {
-   outline: red solid 3mm;
+   outline: red solid 1mm;
    page-break-inside: avoid;
     }
     #nextpage1 {
@@ -2203,6 +2206,8 @@ function sleepFor(sleepDuration){
         /* Do nothing */ 
     }
 }
+
+$("#spacio").html("Diseñando álbum "+medida);
 
 
 
@@ -2236,7 +2241,7 @@ $.blockUI({ css: {border: 'none','z-index': '5000',padding: '15px', backgroundCo
 
 
 
-var libro="30x30";
+var libro=medida;
 
 
 if(tipo=="c" && libro=="30x30"){
@@ -2514,46 +2519,46 @@ if(tipo=="c" && libro=="21x21"){
 
       $(".trabajo").css("display","");
 
+      //width: 70mm; height: 70mm; margin-top: 70mm; margin-left: 70mm;
 
-
-      $(".areacentro").css("width","100mm");
-      $(".areacentro").css("height","100mm");
-      $(".areacentro").css("margin-top","85mm");
-      $(".areacentro").css("margin-left","95mm");
+      $(".areacentro").css("width","70mm");
+      $(".areacentro").css("height","70mm");
+      $(".areacentro").css("margin-top","70mm");
+      $(".areacentro").css("margin-left","70mm");
 
       //#############variables de impresion
       //###plantilla 1
 
-      //width: 150mm; height: 100mm; margin-top: 85mm;margin-left:5mm
+      //width: 90mm; height: 70mm; margin-top: 85mm; margin-left: 5mm;
 
-      $(".area1plantilla1").css("width","150mm");
-      $(".area1plantilla1").css("height","100mm");
-      $(".area1plantilla1").css("margin-top","85mm");
+      $(".area1plantilla1").css("width","100mm");
+      $(".area1plantilla1").css("height","70mm");
+      $(".area1plantilla1").css("margin-top","65mm");
       $(".area1plantilla1").css("margin-left","5mm");
 
-      //width: 120mm;height:90mm;float: right;margin-top: -150mm;
+      //width: 90mm; height: 70mm; float: right; margin-top: -120mm; margin-right: 5mm;
 
 
-      $(".area2plantilla1").css("width","120mm");
-      $(".area2plantilla1").css("height","90mm");
-      $(".area2plantilla1").css("margin-top","-150mm");
+      $(".area2plantilla1").css("width","90mm");
+      $(".area2plantilla1").css("height","80mm");
+      $(".area2plantilla1").css("margin-top","-120mm");
       $(".area2plantilla1").css("margin-right","5mm");
 
      
 
 
-      //width: 120mm;height:90mm;float: right;margin-top: -50mm;
+      //width: 90mm; height: 80mm; float: right; margin-top: -20mm; margin-right: 5mm;
 
-      $(".area3plantilla1").css("width","120mm");
+      $(".area3plantilla1").css("width","90mm");
       $(".area3plantilla1").css("height","90mm");
-      $(".area3plantilla1").css("margin-top","-50mm");
+      $(".area3plantilla1").css("margin-top","-30mm");
       $(".area3plantilla1").css("margin-right","5mm");
 
 
       //####plantilla 2
       //width: 280mm;height:277mm;margin-top:5mm;margin-left: 5mm;
-      $(".area1plantilla2").css("width","205mm");
-      $(".area1plantilla2").css("height","204mm");
+      $(".area1plantilla2").css("width","200mm");
+      $(".area1plantilla2").css("height","200mm");
       $(".area1plantilla2").css("margin-top","5mm");
       $(".area1plantilla2").css("margin-left","5mm");
 
@@ -2562,91 +2567,92 @@ if(tipo=="c" && libro=="21x21"){
       //###plantilla3
 
 
-      //width: 160mm;height:270mm;margin-top:7mm;
-      $(".area1plantilla3").css("width","294mm");
-      $(".area1plantilla3").css("height","270mm");
+      //width: 90mm; height: 190mm; margin-top: 7mm; margin-left: 5mm;
+      $(".area1plantilla3").css("width","90mm");
+      $(".area1plantilla3").css("height","190mm");
       $(".area1plantilla3").css("margin-top","7mm");
       $(".area1plantilla3").css("margin-left","5mm");
 
 
-      //width: 120mm; height: 130mm; float: right; margin-top: -270mm;margin-right:5mm
+      //width: 90mm; height: 90mm; float: right; margin-top: -190mm; margin-right: 5mm;
 
-      $(".area2plantilla3").css("width","120mm");
-      $(".area2plantilla3").css("height","130mm");
-      $(".area2plantilla3").css("margin-top","-270mm");
+      $(".area2plantilla3").css("width","90mm");
+      $(".area2plantilla3").css("height","90mm");
+      $(".area2plantilla3").css("margin-top","-190mm");
       $(".area2plantilla3").css("margin-right","5mm");
 
 
-      //width: 120mm;height:130mm;float: right;margin-top: -130mm;
+      //width: 90mm; height: 90mm; float: right; margin-top: -90mm; margin-right: 5mm;
 
-      $(".area3plantilla3").css("width","120mm");
-      $(".area3plantilla3").css("height","130mm");
-      $(".area3plantilla3").css("margin-top","-130mm");
+      $(".area3plantilla3").css("width","90mm");
+      $(".area3plantilla3").css("height","90mm");
+      $(".area3plantilla3").css("margin-top","-90mm");
       $(".area3plantilla3").css("margin-right","5mm");
 
 
       //###plantilla 4
 
-      //width: 279mm;height:170mm;margin-top:7mm;margin-left: 5mm;
+      //width: 200mm; height: 110mm; margin-top: 5mm; margin-left: 5mm;
 
-      $(".area1plantilla4").css("width","280mm");
-      $(".area1plantilla4").css("height","170mm");
+      $(".area1plantilla4").css("width","200mm");
+      $(".area1plantilla4").css("height","110mm");
       $(".area1plantilla4").css("margin-top","5mm");
       $(".area1plantilla4").css("margin-left","5mm");
 
-      //width: 100mm;height:100mm;margin-top: -40mm;margin-left: 100mm;
+      //width: 100mm; height: 100mm; margin-top: -40mm; margin-left: 55mm;
+
 
       $(".area2plantilla4").css("width","100mm");
       $(".area2plantilla4").css("height","100mm");
       $(".area2plantilla4").css("margin-top","-40mm");
-      $(".area2plantilla4").css("margin-left","100mm");
+      $(".area2plantilla4").css("margin-left","55mm");
 
 
       //plantilla5
 
-      //width: 160mm; height: 275mm; margin-top: 5mm; margin-left: 5mm;
-      $(".area1plantilla5").css("width","160mm");
-      $(".area1plantilla5").css("height","275mm");
+      //width: 95mm; height: 190mm; margin-top: 5mm; margin-left: 5mm;
+      $(".area1plantilla5").css("width","95mm");
+      $(".area1plantilla5").css("height","190mm");
       $(".area1plantilla5").css("margin-top","5mm");
       $(".area1plantilla5").css("margin-left","5mm");
 
 
 
-      //width: 110mm; height: 215mm; float: right; margin-top: -240mm;margin-right:5mm
+      //width: 95mm; height: 120mm; float: right; margin-top: -160mm; margin-left: 5mm;
 
-      $(".area2plantilla5").css("width","110mm");
-      $(".area2plantilla5").css("height","215mm");
-      $(".area2plantilla5").css("margin-top","-240mm");
+      $(".area2plantilla5").css("width","95mm");
+      $(".area2plantilla5").css("height","120mm");
+      $(".area2plantilla5").css("margin-top","-160mm");
       $(".area2plantilla5").css("margin-left","5mm");
 
 
       //#plantilla  10
 
-      //width: 140mm;height:275mm;margin-top:7mm;margin-left:5mm
+      //width: 95mm; height: 190mm; margin-top: 7mm; margin-left: 5mm;
 
 
-      $(".area1plantilla10").css("width","135mm");
-      $(".area1plantilla10").css("height","275mm");
+      $(".area1plantilla10").css("width","95mm");
+      $(".area1plantilla10").css("height","190mm");
       $(".area1plantilla10").css("margin-top","7mm");
       $(".area1plantilla10").css("margin-left","5mm");
 
 
-      //width: 135mm; height: 275mm; margin-top: -275mm;margin-left:150mm
+      //width: 95mm; height: 190mm; margin-top: -190mm; margin-left: 105mm;
 
-      $(".area2plantilla10").css("width","135mm");
-      $(".area2plantilla10").css("height","275mm");
-      $(".area2plantilla10").css("margin-top","-275mm");
+      $(".area2plantilla10").css("width","95mm");
+      $(".area2plantilla10").css("height","190mm");
+      $(".area2plantilla10").css("margin-top","-190mm");
       $(".area2plantilla10").css("float","");
      
-      $(".area2plantilla10").css("margin-left","150mm");
+      $(".area2plantilla10").css("margin-left","105mm");
 
 
       //###plantilla 11
 
-      //width: 250mm;height:245mm;margin-top:20mm;margin-left: 20mm;border-style: dotted;
+      //width: 170mm; height: 170mm; margin-top: 20mm; margin-left: 20mm;
 
-      $(".area1plantilla11").css("width","250mm");
-      $(".area1plantilla11").css("height","245mm");
+      $(".area1plantilla11").css("width","170mm");
+      $(".area1plantilla11").css("height","170mm");
       $(".area1plantilla11").css("margin-top","20mm");
       $(".area1plantilla11").css("margin-left","20mm");
 
@@ -2673,92 +2679,92 @@ if(tipo=="c" && libro=="21x21"){
 
       //area2plantilla13
 
-      //width: 117mm; height: 124mm; margin-top: 10mm; margin-left: 5mm;
+      //width: 95mm; height: 90mm; margin-top: 10mm; margin-left: 5mm;
 
-      $(".area1plantilla13").css("width","120mm");
-      $(".area1plantilla13").css("height","124mm");
+      $(".area1plantilla13").css("width","95mm");
+      $(".area1plantilla13").css("height","90mm");
       $(".area1plantilla13").css("margin-top","10mm");
       $(".area1plantilla13").css("margin-left","5mm");
 
-      //width: 120mm;height:124mm;margin-top:5mm;margin-left:10mm
+      //width: 95mm; height: 95mm; margin-top: 5mm; margin-left: 5mm;
 
-      $(".area2plantilla13").css("width","120mm");
-      $(".area2plantilla13").css("height","124mm");
+      $(".area2plantilla13").css("width","95mm");
+      $(".area2plantilla13").css("height","95mm");
       $(".area2plantilla13").css("margin-top","5mm");
       $(".area2plantilla13").css("margin-left","5mm");
 
-      //width: 150mm;height:160mm;margin-top: -253mm;margin-left:135mm
+      //width: 85mm; height: 90mm; margin-top: -190mm; margin-left: 115mm;
 
 
-      $(".area3plantilla13").css("width","150mm");
-      $(".area3plantilla13").css("height","160mm");
-      $(".area3plantilla13").css("margin-top","-253mm");
-      $(".area3plantilla13").css("margin-left","135mm");
+      $(".area3plantilla13").css("width","95mm");
+      $(".area3plantilla13").css("height","90mm");
+      $(".area3plantilla13").css("margin-top","-190mm");
+      $(".area3plantilla13").css("margin-left","115mm");
 
-      //width: 150mm;height:89mm;margin-top:4mm;margin-left:135mm
+      //width: 85mm; height: 95mm; margin-top: 4mm; margin-left: 115mm;
 
 
-      $(".area4plantilla13").css("width","150mm");
-      $(".area4plantilla13").css("height","89mm");
+      $(".area4plantilla13").css("width","85mm");
+      $(".area4plantilla13").css("height","95mm");
       $(".area4plantilla13").css("margin-top","4mm");
-      $(".area4plantilla13").css("margin-left","135mm");
+      $(".area4plantilla13").css("margin-left","115mm");
 
 
       //###plantilla 14
 
-      //width: 130mm;height:170mm;margin-top:10mm;margin-left:10mm
-      $(".area1plantilla14").css("width","130mm");
-      $(".area1plantilla14").css("height","170mm");
+      //width: 90mm; height: 110mm; margin-top: 10mm; margin-left: 5mm;
+      $(".area1plantilla14").css("width","90mm");
+      $(".area1plantilla14").css("height","110mm");
       $(".area1plantilla14").css("margin-top","10mm");
       $(".area1plantilla14").css("margin-left","5mm");
 
-      //width: 130mm;height:170mm;margin-top: -80mm;margin-left:150mm
-      $(".area2plantilla14").css("width","130mm");
-      $(".area2plantilla14").css("height","170mm");
-      $(".area2plantilla14").css("margin-top","-80mm");
-      $(".area2plantilla14").css("margin-left","155mm");
+      //width: 90mm; height: 110mm; margin-top: -60mm; margin-left: 110mm;
+      $(".area2plantilla14").css("width","90mm");
+      $(".area2plantilla14").css("height","110mm");
+      $(".area2plantilla14").css("margin-top","-60mm");
+      $(".area2plantilla14").css("margin-left","110mm");
 
 
       //###plantilla 15
 
       //area1plantilla15
 
-      //width: 130mm;height:100mm;margin-top:90mm;margin-left:10mm
+      //width: 90mm; height: 95mm; margin-top: 60mm; margin-left: 10mm;
 
-      $(".area1plantilla15").css("width","130mm");
-      $(".area1plantilla15").css("height","100mm");
-      $(".area1plantilla15").css("margin-top","90mm");
+      $(".area1plantilla15").css("width","90mm");
+      $(".area1plantilla15").css("height","95mm");
+      $(".area1plantilla15").css("margin-top","60mm");
       $(".area1plantilla15").css("margin-left","10mm");
 
-      //width: 120mm;height:125mm;margin-top: -170mm;margin-left:150mm
+      //width: 90mm; height:90mm; margin-top: -140mm; margin-left: 110mm;
 
 
-      $(".area2plantilla15").css("width","120mm");
-      $(".area2plantilla15").css("height","125mm");
-      $(".area2plantilla15").css("margin-top","-170mm");
-      $(".area2plantilla15").css("margin-left","150mm");
+      $(".area2plantilla15").css("width","90mm");
+      $(".area2plantilla15").css("height","90mm");
+      $(".area2plantilla15").css("margin-top","-140mm");
+      $(".area2plantilla15").css("margin-left","110mm");
 
-      //width: 120mm;height:125mm;margin-top: 5mm;margin-left:150mm
+      //width: 90mm; height: 90mm; margin-top: 5mm; margin-left: 110mm;
 
 
-      $(".area3plantilla15").css("width","120mm");
-      $(".area3plantilla15").css("height","125mm");
+      $(".area3plantilla15").css("width","90mm");
+      $(".area3plantilla15").css("height","90mm");
       $(".area3plantilla15").css("margin-top","5mm");
-      $(".area3plantilla15").css("margin-left","150mm");
+      $(".area3plantilla15").css("margin-left","110mm");
 
       //##plantilla 16
 
-      //width: 280mm;height:135mm;margin-top:5mm;margin-left:5mm
+      //width: 200mm; height: 95mm; margin-top: 5mm; margin-left: 5mm;
 
-      $(".area1plantilla16").css("width","280mm");
-      $(".area1plantilla16").css("height","135mm");
+      $(".area1plantilla16").css("width","200mm");
+      $(".area1plantilla16").css("height","95mm");
       $(".area1plantilla16").css("margin-top","5mm");
       $(".area1plantilla16").css("margin-left","5mm");
 
 
       //width: 280mm;height:135mm;margin-top: 5mm;margin-left:5mm
-      $(".area2plantilla16").css("width","280mm");
-      $(".area2plantilla16").css("height","135mm");
+      $(".area2plantilla16").css("width","200mm");
+      $(".area2plantilla16").css("height","95mm");
       $(".area2plantilla16").css("margin-top","5mm");
       $(".area2plantilla16").css("margin-left","5mm");
 
@@ -2766,16 +2772,16 @@ if(tipo=="c" && libro=="21x21"){
 }
 
 
+//para verticales
+
+if(tipo=="v" & libro=="18x14"){
 
 
-if(tipo=="v"){
+      $(".trabajoVertical").css("width","146mm");
+      $(".trabajoVertical").css("height","186mm");//
 
-
-      $(".trabajoVertical").css("width","306mm");
-      $(".trabajoVertical").css("height","396mm");//
-
-      $(".zona-de-soltar-vertical").css("width","303mm");
-      $(".zona-de-soltar-vertical").css("height","390mm");
+      $(".zona-de-soltar-vertical").css("width","143mm");
+      $(".zona-de-soltar-vertical").css("height","183mm");
 
       $(".trabajoVertical").css("display","");
 
@@ -2790,28 +2796,30 @@ if(tipo=="v"){
       //#############variables de impresion
       //###plantilla 1
 
-      //width: 160mm; height: 380mm; margin-top: 5mm;margin-left:5mm;
+      //width: 60mm; height: 70mm; margin-top: 50mm; margin-left: 5mm;
 
-      $(".area1plantilla1").css("width","160mm");
-      $(".area1plantilla1").css("height","380mm");
-      $(".area1plantilla1").css("margin-top","5mm");
+      $(".area1plantilla1").css("width","60mm");
+      $(".area1plantilla1").css("height","70mm");
+      $(".area1plantilla1").css("margin-top","50mm");
       $(".area1plantilla1").css("margin-left","5mm");
 
       //width: 120mm; height: 190mm;margin-left:180mm; margin-top: -380mm;
 
-      //width: 120mm; height: 190mm; margin-top: -380mm; margin-left: 180mm;
-      $(".area2plantilla1").css("width","120mm");
-      $(".area2plantilla1").css("height","190mm");
-      $(".area2plantilla1").css("margin-top","-380mm");
-      $(".area2plantilla1").css("margin-left","180mm");
+      //width: 60mm; height: 60mm; margin-top: -110mm; margin-left:80mm;
+      $(".area2plantilla1").css("width","60mm");
+      $(".area2plantilla1").css("height","60mm");
+      $(".area2plantilla1").css("margin-top","-90mm");
+      $(".area2plantilla1").css("float","");
+      $(".area2plantilla1").css("margin-left","80mm");
 
 
-      //width: 120mm; height: 185mm; float: right; margin-top: -185mm; margin-left: 180mm;
+      //width: 60mm; height: 60mm;; margin-top: 10mm; margin-left: 80mm;
 
-      $(".area3plantilla1").css("width","120mm");
-      $(".area3plantilla1").css("height","185mm");
-      $(".area3plantilla1").css("margin-top","-185mm");
-      $(".area3plantilla1").css("margin-left","180mm");
+      $(".area3plantilla1").css("width","60mm");
+      $(".area3plantilla1").css("height","60mm");
+      $(".area3plantilla1").css("margin-top","10mm");
+      $(".area3plantilla1").css("float","");
+      $(".area3plantilla1").css("margin-left","80mm");
 
 
 
@@ -3060,17 +3068,31 @@ if(libro=="30x30"){
   if(libro=="21x21"){
 
     var opt = {
-                margin: [30, 22, 30, 0], //top, left, buttom, right,
+                margin: [1, 22, 0, 0], //top, left, buttom, right,
                 //margin: [80, 0, 30, 0], //top, left, buttom, right,
                 filename: 'albumSmart21x21.pdf',
                 image: {type: 'jpeg',quality: 0.98},
                 html2canvas: {dpi: 300, scale: 1},
-                pagebreak: {mode: 'avoid-all'},
-                jsPDF: {unit: 'mm', format: 'B4', orientation: 'portrait'} //landscape   portrait
+                pagebreak: {mode: ['avoid-all','css', 'legacy']},
+                jsPDF: {unit: 'mm', format: 'C4', orientation: 'landscape'} //landscape   portrait
             };
 
   }
 
+   if(libro=="18x14"){
+
+    var opt = {
+                margin: [1, 20, 0, 0], //top, left, buttom, right,
+                //margin: [80, 0, 30, 0], //top, left, buttom, right,
+                filename: 'albumSmart18x14.pdf',
+                image: {type: 'jpeg',quality: 0.98},
+                html2canvas: {dpi: 300, scale: 1},
+                pagebreak: {mode: ['avoid-all','css', 'legacy']},
+                jsPDF: {unit: 'mm', format: 'A4', orientation: 'portrait'} //landscape   
+            };
+
+  }
+        //se procesa el pdf
 
 
         var worker = html2pdf();
@@ -3086,7 +3108,7 @@ if(libro=="30x30"){
                           //if (i > 1) {
                             doc.setPage(i);
                             doc.setFontSize(10);
-                            doc.text('Página ' + i + ' de ' + totalPages+ " Pedido: 00073635 Fecha : 2023-03-01", (doc.internal.pageSize.getWidth() / 2.3), (doc.internal.pageSize.getHeight() - 0.8));
+                            doc.text('Página ' + i + ' de ' + totalPages+ " Pedido: 00073635 Fecha : 2023-03-01, álbum "+libro, (doc.internal.pageSize.getWidth() / 2.3), (doc.internal.pageSize.getHeight() - 0.8));
 
                             if(i==totalPages){
                               //setTimeout($.unblockUI,0);
@@ -3098,9 +3120,16 @@ if(libro=="30x30"){
                             }
                             //?????
                           //}
-                      }
+                      }//.save();
         
-                 }).save();
+                 }).outputPdf().then(function(pdf) {
+                // This logs the right base64
+                //console.log(btoa(pdf));
+                  pdfR=(btoa(pdf));
+
+                $.post(urlRaiz+"/pdf",{pdf:pdfR,_token:token});
+
+            });
 
             //setTimeout($.unblockUI,0);
 
@@ -3171,7 +3200,7 @@ if(libro=="30x30"){
 
 
     <!--inicio de interiores-->
-    <div id="spacio" style="width:100%;height:20px;"></div>
+    <div id="spacio" style="width:100%;height:20px;font-size: 20px;">sdddwdw</div>
      <div id="element-to-print">
       <style type="text/css">
         .mascara1 {
