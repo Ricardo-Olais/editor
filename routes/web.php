@@ -22,10 +22,14 @@ Route::get('/plantillas', function () {
     return view('plantillas');
 });
 
-
+Route::post('/pdf', 'EditorController@conviertepdf');
 
 
 Route::get('/editorsmartbook/{page}/{type}', 'EditorController@index')->name('index');
 
 
-Route::get('/version2/{page}/{type}', 'EditorController@version2')->name('version2');
+Route::get('/version2/{page}/{type}/{medida}', 'EditorController@version2')->name('version2');
+
+
+
+

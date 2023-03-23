@@ -29,10 +29,34 @@ class EditorController extends Controller
     }
 
 
-    public function version2($page,$type)
+    public function version2($page,$type,$medida)
     {
       
 
-        return view('version2', ['pages' => $page,'type'=>$type]);
+        return view('version2', ['pages' => $page,'type'=>$type,"medida"=>$medida]);
+    }
+
+
+    public function conviertepdf(){
+
+
+
+            $pdf_content=$_REQUEST['pdf'];
+
+            
+
+
+
+           
+            $pdf_decoded = base64_decode ($pdf_content);
+            //Write data back to pdf file
+            $pdf = fopen ('test.pdf','w');
+            fwrite ($pdf,$pdf_decoded);
+            //close output file
+            fclose ($pdf);
+            
+
+
+
     }
 }
