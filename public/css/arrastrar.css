@@ -1,0 +1,209 @@
+body{
+
+  background-color: #F0F0F0;
+  //background-image: url("{{ URL::to('/') }}/img/fondos/fondo3.jpg");
+ background-size: cover;
+
+
+
+
+}
+
+#zonasDeSoltar, #arrastrables{display:flex;}  
+#arrastrables div{
+
+
+width: 900px !important;
+
+
+}
+.arrastrable {
+    flex:0 0 100px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    background: white;
+    border:1px solid;
+    margin-top: 15px;
+ 
+  }
+
+  .zona-de-soltar {
+    //flex:0 0 100px;
+   
+
+  }
+
+  .punteado{
+  border-style: dotted;
+   border-width: 1px;
+   border-color: 660033;
+ 
+   font-family: verdana, arial;
+   font-size: 10pt;
+}
+
+.zoom{
+
+
+transition: 1.5ms ease;
+ -moz-transition: 1.5s ease; /* Firefox */
+ -webkit-transition: 1.5s ease; /* Chrome - Safari */
+ -o-transition: 1.5s ease; /* Opera */
+}
+.zoom:hover{
+transform : scale(1.2);
+-moz-transform : scale(1.1); /* Firefox */
+-webkit-transform : scale(1.1); /* Chrome - Safari */
+-o-transform : scale(1.1); /* Opera */
+-ms-transform : scale(1.1); /* IE9 */ }
+
+.exemples > div {
+        background-color: white;
+      }
+
+ .wrapper{
+  position: absolute;
+   top: 50%;
+   left: 50%;
+
+  max-width:250px;
+  width: 100%;
+
+ 
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  
+}
+.wrapper header{
+  font-size: 23px;
+  font-weight: 500;
+  padding: 17px 30px;
+
+  
+}
+.wrapper header.active{
+  cursor: move;
+  user-select: none;
+}
+.wrapper .content{
+  display: flex;
+ 
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.campotransparente {background:transparent;}
+
+/*.select2-container--default .select2-selection--single {
+    background-color: #000;
+
+  }*/
+
+
+  /* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #678aa0 ; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  #9cadb6 ; 
+}
+
+.fondoMini{
+
+  background-color: #8ADCDC !important;
+}
+
+/*#modalImagenes{
+    background:transparent !important;
+
+}*/
+
+.modal-backdrop
+{
+    opacity:0 !important;
+}
+
+.draggable { 
+  position: absolute;
+   top: 50%;
+   left: 50%;
+  padding: 0.5em;
+  width: 240px; height: 50px;
+  background:transparent;
+
+ 
+
+ 
+  cursor:all-scroll;
+  border-style: none;
+  
+ }
+
+ button.btn-settings {
+  margin: 25px;
+  padding: 20px 30px;
+  font-size: 1.2em;
+  background-color: #337ab7;
+  color: white;
+}
+button.btn-settings:active {
+  color: white;
+}
+.modal {
+    overflow: hidden;
+}
+
+.modal-header {
+  height:30px;
+  padding: 20px;
+  background-color:#000;
+  color:white;
+}
+.modal-title {
+  margin-top:-10px;
+  font-size:16px;
+}
+.modal-header .close {
+  margin-top:-10px;
+  color:#fff;
+}
+.modal-body {
+  color:#888;
+  padding: 5px 35px 20px;
+}
+.modal-body h3 {
+  text-align: center;
+}
+.modal-body p {
+  padding-top:10px;
+  font-size: 1.1em;
+}
+
+.mascara1 {
+  -webkit-mask-image: url("{{ URL::to('/') }}/img/mascaras/1.png");
+  mask-image: url("{{ URL::to('/') }}/img/mascaras/1.png");
+  object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
+
+}
+
+.mascara2 {
+  -webkit-mask-image: url("{{ URL::to('/') }}/img/mascaras/2.png");
+  mask-image: url("{{ URL::to('/') }}/img/mascaras/2.png");
+  object-fit: cover;-webkit-mask-size: cover;mask-size: cover;;
+
+}
