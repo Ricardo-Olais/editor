@@ -36,6 +36,14 @@ class EditorController extends Controller
         return view('version2', ['pages' => $page,'type'=>$type,"medida"=>$medida]);
     }
 
+     public function ok($page,$type,$medida,$lomo)
+    {
+      
+       //return view('ok', ['pages' => $page,'type'=>$type,"medida"=>$medida]);
+
+        return view('ok', ['pages' => $page,'type'=>$type,"medida"=>$medida,"lomo"=>$lomo]);
+    }
+
 
     public function conviertepdf(){
 
@@ -43,14 +51,22 @@ class EditorController extends Controller
 
             $pdf_content=$_REQUEST['pdf'];
 
+            $fecha=date("Ymdhis");
+
+
+            $micarpeta = "pedidos/ORDEN_12345_$fecha/";
+                    if (!file_exists($micarpeta)) {
+                        mkdir($micarpeta, 0777, true);
+                    }
+
             
 
-
+            
 
            
             $pdf_decoded = base64_decode ($pdf_content);
             //Write data back to pdf file
-            $pdf = fopen ('test.pdf','w');
+            $pdf = fopen ("$micarpeta/pages_album_$fecha.pdf",'w');
             fwrite ($pdf,$pdf_decoded);
             //close output file
             fclose ($pdf);

@@ -284,8 +284,8 @@ function actualizarLetra(event) {
 body{
 
   background-color: #F0F0F0;
-  //background-image: url("img/fondo4.jpg");
-
+  //background-image: url("{{ URL::to('/') }}/img/fondos/fondo3.jpg");
+ background-size: cover;
 
 
 
@@ -644,6 +644,7 @@ button.btn-settings:active {
 
         $(".inicial").append("<div id= 'cuadrado"+incremento+"' class= 'trabajo '><div class= 'zona-de-soltar'></div>Página "+incremento+"</div>");
 
+
         }
 
         if(tipo=="v"){
@@ -964,9 +965,9 @@ button.btn-settings:active {
           //############ la 9 pendiente
 
 
-           if(valor=="plantilla10"){
+           if(valor=="plantilla10"){ //width: 49mm;height:105mm;margin-top: -105mm;border-style:dotted;margin-left:50mm
 
-            $("#cuadrado"+incremento).html(' <div class="zona-de-soltar area1plantilla10" style="width: 49mm;height:105mm;margin-top:7mm;border-style:dotted;"></div><div class="zona-de-soltar area2plantilla10" style="width: 49mm;height:105mm;margin-top: -105mm;border-style:dotted;"></div>');
+            $("#cuadrado"+incremento).html(' <div class="zona-de-soltar area1plantilla10" style="width: 49mm;height:105mm;margin-top:7mm;border-style:dotted;"></div><div class="zona-de-soltar area2plantilla10" style="width: 49mm;height:105mm;margin-top: -105mm;border-style:dotted;margin-left:50mm;"></div>');
 
 
           }
@@ -1314,6 +1315,8 @@ button.btn-settings:active {
             return template;
           }
         }
+
+        
   var options = {
     'templateSelection': custom_template,
     'templateResult': custom_template,
@@ -1679,7 +1682,7 @@ window.onload = function() {
  
 
 
-    //$('#cargarImagenes').modal('show'); //para la carga de imagenes
+    $('#cargarImagenes').modal('show'); //para la carga de imagenes
 
 
     $("#cargaIni").click(function(){
@@ -1842,12 +1845,10 @@ $(document).ready(function(){
 
   <div class="btn-toolbar" style="margin:auto;text-align: center;">
     <div class="btn-group">
-        <img src="{{ URL::to('/') }}/img/fondo1.jpg" width="60">
-        <button type="button" class="btn" data-toggle="tooltip" title="Guardar">
-        <iconify-icon icon="material-symbols:save" style="font-size: 24px;"></iconify-icon>
+        
+        
+        <img src="{{ URL::to('/') }}/img/fondos/logo.png" width="120">
 
-
-      </button>
 
     
       <!--button type="button" class="btn">
@@ -2014,7 +2015,7 @@ $(document).ready(function(){
 
 
     <div class="row">
-      <div class="col-sm-1" style="background-color:#F0F0F0;width:150px; height:600px; overflow: scroll;border-radius: 10px;overflow-x: hidden;" id="imagenes-album" ><!--aqui van las imagenes-->
+      <div class="col-sm-1" style="background-color:#5ad1d0;width:150px; height:600px; overflow: scroll;border-radius: 10px;overflow-x: hidden;" id="imagenes-album" ><!--aqui van las imagenes-->
 
       </div>
 
@@ -2249,9 +2250,10 @@ if(tipo=="c" && libro=="30x30"){
 
       $(".trabajo").css("width","293mm");
       $(".trabajo").css("height","290mm");
+      $(".trabajo").css("margin-left","13mm");
 
-      $(".zona-de-soltar").css("width","293mm");
-      $(".zona-de-soltar").css("height","290mm");
+      $(".zona-de-soltar").css("width","283mm");
+      $(".zona-de-soltar").css("height","280mm");
 
       $(".trabajo").css("display","");
 
@@ -2511,11 +2513,12 @@ if(tipo=="c" && libro=="30x30"){
 if(tipo=="c" && libro=="21x21"){
 
 
-      $(".trabajo").css("width","211mm");
-      $(".trabajo").css("height","211mm");
+      $(".trabajo").css("width","208mm");
+      $(".trabajo").css("height","205mm");
+      $(".trabajo").css("margin-left","13mm");
 
-      $(".zona-de-soltar").css("width","208mm");
-      $(".zona-de-soltar").css("height","205mm");
+      $(".zona-de-soltar").css("width","198mm");//198 x 195
+      $(".zona-de-soltar").css("height","195mm");
 
       $(".trabajo").css("display","");
 
@@ -2556,9 +2559,9 @@ if(tipo=="c" && libro=="21x21"){
 
 
       //####plantilla 2
-      //width: 280mm;height:277mm;margin-top:5mm;margin-left: 5mm;
-      $(".area1plantilla2").css("width","200mm");
-      $(".area1plantilla2").css("height","200mm");
+      //width: 198mm; height: 195mm; margin-top: 5mm; margin-left: 5mm;
+      $(".area1plantilla2").css("width","198mm");
+      $(".area1plantilla2").css("height","195mm");
       $(".area1plantilla2").css("margin-top","5mm");
       $(".area1plantilla2").css("margin-left","5mm");
 
@@ -2777,49 +2780,49 @@ if(tipo=="c" && libro=="21x21"){
 if(tipo=="v" & libro=="18x14"){
 
 
-      $(".trabajoVertical").css("width","146mm");
-      $(".trabajoVertical").css("height","186mm");//
+      $(".trabajoVertical").css("width","183mm");
+      $(".trabajoVertical").css("height","140mm");//
 
-      $(".zona-de-soltar-vertical").css("width","143mm");
-      $(".zona-de-soltar-vertical").css("height","183mm");
+      $(".zona-de-soltar-vertical").css("width","173mm");
+      $(".zona-de-soltar-vertical").css("height","130mm");
 
       $(".trabajoVertical").css("display","");
 
 
-      //width: 150mm; height: 150mm; margin-top: 110mm; margin-left: 80mm;
+      //width: 90mm; height: 90mm; margin-top: 45mm; margin-left: 30mm;
 
-      $(".areacentro").css("width","150mm");
-      $(".areacentro").css("height","150mm");
-      $(".areacentro").css("margin-top","110mm");
-      $(".areacentro").css("margin-left","80mm");
+      $(".areacentro").css("width","90mm");
+      $(".areacentro").css("height","90mm");
+      $(".areacentro").css("margin-top","45mm");
+      $(".areacentro").css("margin-left","30mm");
 
       //#############variables de impresion
       //###plantilla 1
 
-      //width: 60mm; height: 70mm; margin-top: 50mm; margin-left: 5mm;
+      //width: 80mm; height: 90mm; margin-top: 30mm; margin-left: 5mm;
 
-      $(".area1plantilla1").css("width","60mm");
-      $(".area1plantilla1").css("height","70mm");
-      $(".area1plantilla1").css("margin-top","50mm");
+      $(".area1plantilla1").css("width","80mm");
+      $(".area1plantilla1").css("height","80mm");
+      $(".area1plantilla1").css("margin-top","30mm");
       $(".area1plantilla1").css("margin-left","5mm");
 
       //width: 120mm; height: 190mm;margin-left:180mm; margin-top: -380mm;
 
-      //width: 60mm; height: 60mm; margin-top: -110mm; margin-left:80mm;
-      $(".area2plantilla1").css("width","60mm");
-      $(".area2plantilla1").css("height","60mm");
-      $(".area2plantilla1").css("margin-top","-90mm");
+      //width: 50mm; height: 50mm; margin-top: -110mm; margin-left: 120mm;
+      $(".area2plantilla1").css("width","50mm");
+      $(".area2plantilla1").css("height","50mm");
+      $(".area2plantilla1").css("margin-top","-110mm");
       $(".area2plantilla1").css("float","");
-      $(".area2plantilla1").css("margin-left","80mm");
+      $(".area2plantilla1").css("margin-left","120mm");
 
 
-      //width: 60mm; height: 60mm;; margin-top: 10mm; margin-left: 80mm;
+      //width: 50mm; height: 50mm; margin-top: 15mm; margin-left: 120mm;
 
-      $(".area3plantilla1").css("width","60mm");
-      $(".area3plantilla1").css("height","60mm");
-      $(".area3plantilla1").css("margin-top","10mm");
+      $(".area3plantilla1").css("width","50mm");
+      $(".area3plantilla1").css("height","50mm");
+      $(".area3plantilla1").css("margin-top","15mm");
       $(".area3plantilla1").css("float","");
-      $(".area3plantilla1").css("margin-left","80mm");
+      $(".area3plantilla1").css("margin-left","120mm");
 
 
 
@@ -2828,9 +2831,9 @@ if(tipo=="v" & libro=="18x14"){
 
 
       //####plantilla 2
-      //width: 280mm;height:277mm;margin-top:5mm;margin-left: 5mm;
-      $(".area1plantilla2").css("width","295mm");
-      $(".area1plantilla2").css("height","385mm");
+      //width: 172mm; height: 130mm; margin-top: 5mm; margin-left: 5mm;
+      $(".area1plantilla2").css("width","172mm");
+      $(".area1plantilla2").css("height","130mm");
       $(".area1plantilla2").css("margin-top","5mm");
       $(".area1plantilla2").css("margin-left","5mm");
 
@@ -2840,159 +2843,167 @@ if(tipo=="v" & libro=="18x14"){
 
 
       
-      //width: 160mm;height:270mm;margin-top:7mm;
-      $(".area1plantilla3").css("width","160mm");
-      $(".area1plantilla3").css("height","270mm");
+      //width: 70mm; height: 170mm; margin-top: 7mm; margin-left: 5mm;
+      $(".area1plantilla3").css("width","70mm");
+      $(".area1plantilla3").css("height","170mm");
       $(".area1plantilla3").css("margin-top","7mm");
       $(".area1plantilla3").css("margin-left","5mm");
 
 
-      //width: 120mm;height:130mm;float: right;margin-top: -270mm;
+      //width: 60mm; height: 80mm; margin-top: -80mm;margin-left:80mm
 
-      $(".area2plantilla3").css("width","120mm");
-      $(".area2plantilla3").css("height","130mm");
-      $(".area2plantilla3").css("margin-top","-270mm");
-      $(".area2plantilla3").css("float","right");
+      $(".area2plantilla3").css("width","60mm");
+      $(".area2plantilla3").css("height","80mm");
+      $(".area2plantilla3").css("margin-top","-80mm");
+      $(".area2plantilla3").css("float","");
+      $(".area2plantilla3").css("margin-left","80mm");
 
 
-      //width: 120mm;height:130mm;float: right;margin-top: -130mm;
+      //width: 60mm; height: 80mm; margin-top: -170mm;margin-left:80mm
 
-      $(".area3plantilla3").css("width","120mm");
-      $(".area3plantilla3").css("height","130mm");
-      $(".area3plantilla3").css("margin-top","-130mm");
-      $(".area3plantilla3").css("float","right");
+      $(".area3plantilla3").css("width","60mm");
+      $(".area3plantilla3").css("height","80mm");
+      $(".area3plantilla3").css("margin-top","-170mm");
+      $(".area3plantilla3").css("float","");
+      $(".area3plantilla3").css("margin-left","80mm");
 
 
       //###plantilla 4
 
-      //width: 290mm; height: 220mm; margin-top: 7mm; margin-left: 5mm;
+      //width: 135mm; height: 120mm; margin-top: 5mm; margin-left: 5mm;
 
-      $(".area1plantilla4").css("width","290mm");
-      $(".area1plantilla4").css("height","2200mm");
-      $(".area1plantilla4").css("margin-top","7mm");
+      $(".area1plantilla4").css("width","135mm");
+      $(".area1plantilla4").css("height","120mm");
+      $(".area1plantilla4").css("margin-top","5mm");
       $(".area1plantilla4").css("margin-left","5mm");
 
-      //width: 120mm; height: 100mm; margin-top: -56mm; margin-left: 90mm;
+      //width: 70mm; height: 70mm; margin-top: -30mm; margin-left: 40mm;
 
-      $(".area2plantilla4").css("width","120mm");
-      $(".area2plantilla4").css("height","100mm");
-      $(".area2plantilla4").css("margin-top","-56mm");
-      $(".area2plantilla4").css("margin-left","100mm");
+      $(".area2plantilla4").css("width","70mm");
+      $(".area2plantilla4").css("height","70mm");
+      $(".area2plantilla4").css("margin-top","-30mm");
+      $(".area2plantilla4").css("margin-left","40mm");
 
 
       //plantilla5
 
-      //width: 180mm; height: 370mm; margin-top: 7mm; margin-left: 5mm;
-      $(".area1plantilla5").css("width","180mm");
-      $(".area1plantilla5").css("height","370mm");
+      //width: 65mm; height: 170mm; margin-top: 7mm; margin-left: 5mm;
+      $(".area1plantilla5").css("width","65mm");
+      $(".area1plantilla5").css("height","170mm");
       $(".area1plantilla5").css("margin-top","7mm");
       $(".area1plantilla5").css("margin-left","5mm");
 
 
 
-      //width: 110mm; height: 215mm; float: right; margin-top: -295mm;
+      //width: 65mm; height: 90mm; margin-top: -130mm;margin-left:75mm
 
-      $(".area2plantilla5").css("width","110mm");
-      $(".area2plantilla5").css("height","215mm");
-      $(".area2plantilla5").css("margin-top","-295mm");
-      $(".area2plantilla5").css("float","right");
+      $(".area2plantilla5").css("width","65mm");
+      $(".area2plantilla5").css("height","90mm");
+      $(".area2plantilla5").css("margin-top","-130mm");
+      $(".area2plantilla5").css("float","");
+      $(".area1plantilla5").css("margin-left","75mm");
 
 
       //#plantilla  10 aqui
 
-      //width: 140mm; height: 375mm; margin-top: 7mm; margin-left: 5mm;
+      //width:65mm; height: 175mm; margin-top: 5mm; margin-left: 5mm;
 
-
-      $(".area1plantilla10").css("width","140mm");
-      $(".area1plantilla10").css("height","375mm");
-      $(".area1plantilla10").css("margin-top","7mm");
+      $(".area1plantilla10").css("width","65mm");
+      $(".area1plantilla10").css("height","175mm");
+      $(".area1plantilla10").css("margin-top","5mm");
       $(".area1plantilla10").css("margin-left","5mm");
 
 
-      //width: 140mm; height: 375mm; float: right; margin-top: -375mm;
+      //wwidth: 65mm; height: 175mm; margin-top: -175mm; margin-left: 75mm;   aquiiiiiiiii
 
-      $(".area2plantilla10").css("width","140mm");
-      $(".area2plantilla10").css("height","375mm");
-      $(".area2plantilla10").css("margin-top","-375mm");
-     // $(".area2plantilla10").css("float","right");
+      $(".area2plantilla10").css("width","65mm");
+      $(".area2plantilla10").css("height","175mm");
+      $(".area2plantilla10").css("margin-top","-175mm");
+      $(".area2plantilla10").css("margin-left","75mm");
+      $(".area2plantilla10").css("float","");
 
  
       //###plantilla 11 aqui
 
-      //width: 265mm; height: 360mm; margin-top: 20mm; margin-left: 20mm;
+      //width:135mm; height: 150mm; margin-top: 20mm; margin-left: 5mm;
 
-      $(".area1plantilla11").css("width","265mm");
-      $(".area1plantilla11").css("height","360mm");
+      $(".area1plantilla11").css("width","135mm");
+      $(".area1plantilla11").css("height","150mm");
       $(".area1plantilla11").css("margin-top","20mm");
-      $(".area1plantilla11").css("margin-left","20mm");
+      $(".area1plantilla11").css("margin-left","5mm");
 
 
       //###plantilla 12 
-      $(".area1plantilla12").css("width","250mm");
-      $(".area1plantilla12").css("height","245mm");
+
+      //width: 60mm; height: 60mm; margin-top: 20mm; margin-left: 20mm;
+      $(".area1plantilla12").css("width","60mm");
+      $(".area1plantilla12").css("height","60mm");
       $(".area1plantilla12").css("margin-top","20mm");
       $(".area1plantilla12").css("margin-left","20mm");
 
 
-      $(".area2plantilla12").css("width","250mm");
-      $(".area2plantilla12").css("height","245mm");
+      //width: 60mm; height: 60mm; margin-top: 20mm; margin-left: 20mm;
+      $(".area2plantilla12").css("width","60mm");
+      $(".area2plantilla12").css("height","60mm");
       $(".area2plantilla12").css("margin-top","20mm");
       $(".area2plantilla12").css("margin-left","20mm");
 
-      $(".area3plantilla12").css("width","250mm");
-      $(".area3plantilla12").css("height","245mm");
-      $(".area3plantilla12").css("margin-top","20mm");
-      $(".area3plantilla12").css("margin-left","20mm");
+      //width: 70mm; height:160mm; margin-top:-150mm; margin-left: 60mm;
+
+      $(".area3plantilla12").css("width","70mm");
+      $(".area3plantilla12").css("height","160mm");
+      $(".area3plantilla12").css("margin-top","-150mm");
+      $(".area3plantilla12").css("margin-left","60mm");
 
 
       //###plantilla 13
 
       //area2plantilla13
 
-      //width: 120mm;height:124mm;margin-top:10mm;margin-left:10mm
+      //width: 65mm; height: 80mm; margin-top: 10mm; margin-left: 5mm;
 
-      $(".area1plantilla13").css("width","117mm");
-      $(".area1plantilla13").css("height","124mm");
+      $(".area1plantilla13").css("width","65mm");
+      $(".area1plantilla13").css("height","80mm");
       $(".area1plantilla13").css("margin-top","10mm");
-      $(".area1plantilla13").css("margin-left","20mm");
+      $(".area1plantilla13").css("margin-left","5mm");
 
-      //width: 120mm;height:124mm;margin-top:5mm;margin-left:10mm
+      //width: 65mm; height: 80mm; margin-top: 5mm; margin-left: 5mm;
 
-      $(".area2plantilla13").css("width","120mm");
-      $(".area2plantilla13").css("height","124mm");
+      $(".area2plantilla13").css("width","65mm");
+      $(".area2plantilla13").css("height","80mm");
       $(".area2plantilla13").css("margin-top","5mm");
-      $(".area2plantilla13").css("margin-left","10mm");
+      $(".area2plantilla13").css("margin-left","5mm");
 
-      //width: 150mm;height:160mm;margin-top: -253mm;margin-left:135mm
-
-
-      $(".area3plantilla13").css("width","150mm");
-      $(".area3plantilla13").css("height","160mm");
-      $(".area3plantilla13").css("margin-top","-253mm");
-      $(".area3plantilla13").css("margin-left","135mm");
-
-      //width: 150mm;height:89mm;margin-top:4mm;margin-left:135mm
+      //width: 65mm; height: 80mm; margin-top: -165mm; margin-left: 75mm;
 
 
-      $(".area4plantilla13").css("width","150mm");
-      $(".area4plantilla13").css("height","89mm");
-      $(".area4plantilla13").css("margin-top","4mm");
-      $(".area4plantilla13").css("margin-left","135mm");
+      $(".area3plantilla13").css("width","65mm");
+      $(".area3plantilla13").css("height","80mm");
+      $(".area3plantilla13").css("margin-top","-165mm");
+      $(".area3plantilla13").css("margin-left","75mm");
+
+      //width: 65mm; height: 80mm; margin-top: 4mm; margin-left: 75mm;
+
+
+      $(".area4plantilla13").css("width","65mm");
+      $(".area4plantilla13").css("height","80mm");
+      $(".area4plantilla13").css("margin-top","5mm");
+      $(".area4plantilla13").css("margin-left","75mm");
 
 
       //###plantilla 14
 
-      //width: 130mm;height:170mm;margin-top:10mm;margin-left:10mm
-      $(".area1plantilla14").css("width","130mm");
-      $(".area1plantilla14").css("height","170mm");
+      //width: 65mm; height: 120mm; margin-top: 10mm; margin-left: 5mm;
+      $(".area1plantilla14").css("width","65mm");
+      $(".area1plantilla14").css("height","120mm");
       $(".area1plantilla14").css("margin-top","10mm");
-      $(".area1plantilla14").css("margin-left","10mm");
+      $(".area1plantilla14").css("margin-left","5mm");
 
-      //width: 130mm;height:170mm;margin-top: -80mm;margin-left:150mm
-      $(".areaplantilla14").css("width","130mm");
-      $(".area2plantilla14").css("height","170mm");
-      $(".area2plantilla14").css("margin-top","-80mm");
-      $(".area2plantilla14").css("margin-left","150mm");
+      //width: 65mm; height: 120mm; margin-top: -75mm; margin-left: 75mm;
+      $(".areaplantilla14").css("width","65mm");
+      $(".area2plantilla14").css("height","120mm");
+      $(".area2plantilla14").css("margin-top","-75mm");
+      $(".area2plantilla14").css("margin-left","75mm");
 
 
       //###plantilla 15
@@ -3024,17 +3035,17 @@ if(tipo=="v" & libro=="18x14"){
 
       //##plantilla 16
 
-      //width: 280mm;height:135mm;margin-top:5mm;margin-left:5mm
+      //width: 135mm; height: 85mm; margin-top: 5mm; margin-left: 5mm;
 
-      $(".area1plantilla16").css("width","280mm");
-      $(".area1plantilla16").css("height","135mm");
+      $(".area1plantilla16").css("width","135mm");
+      $(".area1plantilla16").css("height","85mm");
       $(".area1plantilla16").css("margin-top","5mm");
       $(".area1plantilla16").css("margin-left","5mm");
 
 
-      //width: 280mm;height:135mm;margin-top: 5mm;margin-left:5mm
-      $(".area2plantilla16").css("width","280mm");
-      $(".area2plantilla16").css("height","135mm");
+      //width: 135mm; height: 85mm; margin-top: 5mm; margin-left: 5mm;
+      $(".area2plantilla16").css("width","135mm");
+      $(".area2plantilla16").css("height","85mm");
       $(".area2plantilla16").css("margin-top","5mm");
       $(".area2plantilla16").css("margin-left","5mm");
 
@@ -3053,13 +3064,13 @@ var element = document.getElementById('element-to-print');
 if(libro=="30x30"){
 
     var opt = {
-                margin: [2, 0, 30, 0], //top, left, buttom, right,
+                margin: [3, 3, 3, 0], //top, left, buttom, right,
                 //margin: [80, 0, 30, 0], //top, left, buttom, right,
                 filename: 'albumSmart30x30.pdf',
                 image: {type: 'jpeg',quality: 0.98},
                 html2canvas: {dpi: 300, scale: 1},
                 pagebreak: {mode: 'avoid-all'},
-                jsPDF: {unit: 'mm', format: 'C3', orientation: 'landscape'} //landscape   portrait
+                jsPDF: {unit: 'mm', format:[296,296], orientation: 'portrait'} //landscape   portrait
             };
 
   }
@@ -3068,13 +3079,13 @@ if(libro=="30x30"){
   if(libro=="21x21"){
 
     var opt = {
-                margin: [1, 22, 0, 0], //top, left, buttom, right,
+                margin: [3, 3, 3, 0], //top, left, buttom, right,
                 //margin: [80, 0, 30, 0], //top, left, buttom, right,
                 filename: 'albumSmart21x21.pdf',
                 image: {type: 'jpeg',quality: 0.98},
                 html2canvas: {dpi: 300, scale: 1},
                 pagebreak: {mode: ['avoid-all','css', 'legacy']},
-                jsPDF: {unit: 'mm', format: 'C4', orientation: 'landscape'} //landscape   portrait
+                jsPDF: {unit: 'mm', format:[211,211], orientation: 'portrait'} //landscape   
             };
 
   }
@@ -3082,20 +3093,20 @@ if(libro=="30x30"){
    if(libro=="18x14"){
 
     var opt = {
-                margin: [1, 20, 0, 0], //top, left, buttom, right,
+                margin: [3, 3, 3, 0], //top, left, buttom, right,
                 //margin: [80, 0, 30, 0], //top, left, buttom, right,
                 filename: 'albumSmart18x14.pdf',
                 image: {type: 'jpeg',quality: 0.98},
                 html2canvas: {dpi: 300, scale: 1},
                 pagebreak: {mode: ['avoid-all','css', 'legacy']},
-                jsPDF: {unit: 'mm', format: 'A4', orientation: 'portrait'} //landscape   
+                jsPDF: {unit: 'mm', format:[186,146], orientation: 'portrait'} //landscape   
             };
 
   }
         //se procesa el pdf
 
 
-        var worker = html2pdf();
+     var worker = html2pdf();
         
             console.log(worker);
             worker.set(opt)
@@ -3147,7 +3158,7 @@ if(libro=="30x30"){
     <div class="col-sm-10">
       <!--input type="button" name="pdf" value="PDF" id="pdf"-->
 
-      <div id="vistasPreviasPadre" style="width:100%;height:80px;background-color:#F0F3F3;overflow: scroll;border-radius: 10px;overflow-y: hidden;">
+      <div id="vistasPreviasPadre" style="width:100%;height:80px;background-color:black;overflow: scroll;border-radius: 10px;overflow-y: hidden;color:#fff">
            <table><tr id="vistasPrevias"></tr></table>
 
 
@@ -3200,7 +3211,7 @@ if(libro=="30x30"){
 
 
     <!--inicio de interiores-->
-    <div id="spacio" style="width:100%;height:20px;font-size: 20px;">sdddwdw</div>
+    <div id="spacio" style="width:100%;height:20px;font-size: 24px;"></div>
      <div id="element-to-print">
       <style type="text/css">
         .mascara1 {
@@ -3227,6 +3238,14 @@ if(libro=="30x30"){
     </div>
 
   </div>
+
+  <!--div id="visual" style="width:350px;height: 450px;float:right;margin-top:-400px;">
+    
+    <iframe id="iframepdf" title="Foto álbum" src="{{ URL::to('/') }}/test.pdf" height="449" width="350" frameborder="1" scrolling="auto"></iframe>
+
+  </div-->
+
+
 
   <!--fin de interiores-->
 

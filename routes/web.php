@@ -22,6 +22,11 @@ Route::get('/plantillas', function () {
     return view('plantillas');
 });
 
+/*Route::get('/ok', function () {
+    return view('ok');
+});*/
+
+
 Route::post('/pdf', 'EditorController@conviertepdf');
 
 
@@ -29,6 +34,9 @@ Route::get('/editorsmartbook/{page}/{type}', 'EditorController@index')->name('in
 
 
 Route::get('/version2/{page}/{type}/{medida}', 'EditorController@version2')->name('version2');
+
+
+Route::get('/ok/{page}/{type}/{medida}/{lomo}', 'EditorController@ok')->name('ok');
 
 
 
