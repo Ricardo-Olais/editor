@@ -596,7 +596,7 @@ function actualizarLetra(event) {
           <!--option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla9.PNG" value="plantilla9"></option-->
           <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla10.PNG" value="plantilla10"></option>
           <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla11.PNG" value="plantilla11"></option>
-          <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla12.PNG" value="plantilla12"></option>
+          <!--option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla12.PNG" value="plantilla12"></option-->
           <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla13.PNG" value="plantilla13"></option>
           <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla14.PNG" value="plantilla14"></option>
           <option data-img_src="{{ URL::to('/') }}/img/plantillas/plantilla15.PNG" value="plantilla15"></option>
@@ -643,7 +643,54 @@ function actualizarLetra(event) {
        <div id="element-to-print">
 
 
-        </div>
+      </div>
+
+      <div id="element-to-print-portada">
+
+
+      </div>
+
+      <table style="margin-top: 10px;display: none;" id="inicial-portada">
+          
+          <tr>
+
+            <td>
+
+              <div id="izquierdaPortada"   style="background-color:#fff;width: 350px;height: 350px;position: relative;border-style: dotted;border-color: coral;">
+                
+                  
+
+              </div>
+
+
+            </td>
+
+             <td>
+               <div id="lomo" style="background-color:#EBECAA;width:{{ $lomo}};height:350px;position: relative;"></div>
+
+             </td>
+
+             <td>
+
+                 <div id="derechaPortada"  style="background-color:#fff;width: 350px;height: 350px;position: relative;border-style: dotted;border-color: coral;">
+
+                 
+                   
+
+                 </div>
+            
+
+             </td>
+
+             </tr>
+        </table>
+
+
+
+
+
+
+
         <table style="margin-top: 10px;" id="inicial">
           
           <tr>
