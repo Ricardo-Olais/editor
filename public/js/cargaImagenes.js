@@ -7,7 +7,9 @@ $(document).ready(function(){
 
   var contadorIzquierda=0;
   var contadorDerecha=0;
-  
+  var muestraPortada=0;
+  var dimensionesXP=0;
+  var posicionP=0;
 
   //control para seleccionar plantillas
 
@@ -54,6 +56,8 @@ $("#id_select2_example").change(function(){
 
             if(valor=="plantilla1"){
 
+
+
                $("#pagDerecha"+incremento).html('<div class="zona-de-soltar area1plantilla1" style="width: 50mm;height:50mm;margin-top:20mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla1" style="width: 40mm;height:40mm;float: right;margin-top: -67mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla1" style="width: 40mm;height:40mm;float: right;margin-top: -20mm;border-style: dotted;"></div>');
                  if(incremento>0){
 
@@ -66,6 +70,16 @@ $("#id_select2_example").change(function(){
               }
 
             if(valor=="plantilla2"){
+
+              if(muestraPortada==1){
+
+                 $("#izquierdaPortada").html(' <div class="zona-de-soltar area1plantilla2" style="width: 83mm;height:83mm;margin-top:5mm;margin-left: 5mm;border-style: dotted;"></div>');
+
+                
+                $("#derechaPortada").html(' <div class="zona-de-soltar area1plantilla2" style="width: 83mm;height:83mm;margin-top:5mm;margin-left: 5mm;border-style: dotted;"></div>');
+              
+                 return false;
+              }
 
                $("#pagDerecha"+incremento).html(' <div class="zona-de-soltar area1plantilla2" style="width: 83mm;height:83mm;margin-top:5mm;margin-left: 5mm;border-style: dotted;"></div>');
 
@@ -180,6 +194,22 @@ $("#id_select2_example").change(function(){
               }
 
 
+            if(valor=="plantilla12"){
+
+               $("#pagDerecha"+incremento).html('<div class="zona-de-soltar area1plantilla12" style="width: 40mm;height:40mm;margin-top:5mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla12" style="width: 40mm;height:40mm;margin-top:1mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla12" style="width: 60mm;height:90mm;margin-top: -85mm;margin-left:27mm;border-style: dotted;">');
+
+               if(incremento>0){
+
+                      resta=incremento-1; //izquierda
+
+                    }
+          
+                $("#pagIzquierda"+resta).html('<div class="zona-de-soltar area1plantilla12" style="width: 40mm;height:40mm;margin-top:5mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area2plantilla12" style="width: 40mm;height:40mm;margin-top:1mm;margin-left:10mm;border-style: dotted;"></div><div class="zona-de-soltar area3plantilla12" style="width: 60mm;height:90mm;margin-top: -85mm;margin-left:27mm;border-style: dotted;">');
+
+            }
+
+
+
 
 
 
@@ -268,6 +298,22 @@ $("#id_select2_example").change(function(){
 
       // $("#izquierda").append('<div id="pagIzquierda'+incremento+'"> pagina '+incremento+'<div class="zona-de-soltar" style="width:100%;height:80mm;margin-top:7mm;border-style:dotted;"></div></div>');
 
+        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vistap0'><img src='"+urlRaiz+"/img/hoja.png' width=15 ><br><center><b style='text-align:center;'>Portada</b></center></td>");
+
+        
+        $("#vistap0").click(function(){
+
+          $("#inicial-portada").css("display","");
+          $("#inicial").css("display","none");
+
+          muestraPortada=1;
+
+          
+
+        });
+
+       
+
 
         $("#agregar").click(function(){
 
@@ -313,11 +359,24 @@ $("#id_select2_example").change(function(){
 
                  $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vista"+incremento+"' class='vistasp'><img src='"+urlRaiz+"/img/hoja.png' width=15 ><br><center><b style='text-align:center;'>"+incremento+"</b></center></td>");
 
+                  $(".vistasp").click(function(){
 
-              // }
+                  
+
+                    $("#inicial-portada").css("display","none");
+                    $("#inicial").css("display","");
+
+                    muestraPortada=0;
+
+                    
+
+                  });
+              
 
 
       });
+
+
 
 
        $("#atras").click(function(){
@@ -445,6 +504,17 @@ $("#id_select2_example").change(function(){
 
       $.blockUI({ css: {border: 'none','z-index': '5000',padding: '15px', backgroundColor: '#000', '-webkit-border-radius': '10px','-moz-border-radius': '10px',opacity: 1, color: '#fff'} }); setTimeout($.unblockUI, 5000); 
 
+
+       agregaPagportada=$("#izquierdaPortada").html();
+       agregaPagportada2=$("#derechaPortada").html();
+
+       $("#element-to-print-portada").append("<div class='trabajo'>" +agregaPagportada+"</div>");
+       $("#element-to-print-portada").append("<div class='trabajo'>" +agregaPagportada2+"</div>");
+
+
+      
+
+
       for(i=1;i<=paginas;i++){
 
    
@@ -468,6 +538,9 @@ $("#id_select2_example").change(function(){
 
 
         $("#element-to-print").append("<div class='trabajo'>" +agregaPag+"</div>");
+
+
+
 
         if(paginas==i){
 
@@ -517,6 +590,25 @@ $("#id_select2_example").change(function(){
           $(".area1plantilla2").css("margin-left","5mm");
 
 
+          //plantilla 3
+          $(".area1plantilla3").css("width","90mm");
+          $(".area1plantilla3").css("height","190mm");
+          $(".area1plantilla3").css("margin-top","7mm");
+          $(".area1plantilla3").css("margin-left","5mm");
+
+          $(".area2plantilla3").css("width","90mm");
+          $(".area2plantilla3").css("height","90mm");
+          $(".area2plantilla3").css("margin-top","-190mm");
+          $(".area2plantilla3").css("margin-right","5mm");
+
+ 
+          $(".area3plantilla3").css("width","90mm");
+          $(".area3plantilla3").css("height","90mm");
+          $(".area3plantilla3").css("margin-top","-90mm");
+          $(".area3plantilla3").css("margin-right","5mm");
+
+
+
           //plantilla 5
 
           $(".area1plantilla4").css("width","200mm");
@@ -531,6 +623,20 @@ $("#id_select2_example").change(function(){
           $(".area2plantilla4").css("margin-top","-40mm");
           $(".area2plantilla4").css("margin-left","55mm");
 
+          //plantilla 6
+          $(".area1plantilla5").css("width","95mm");
+          $(".area1plantilla5").css("height","190mm");
+          $(".area1plantilla5").css("margin-top","5mm");
+          $(".area1plantilla5").css("margin-left","5mm");
+
+
+          $(".area2plantilla5").css("width","95mm");
+          $(".area2plantilla5").css("height","120mm");
+          $(".area2plantilla5").css("margin-top","-160mm");
+          $(".area2plantilla5").css("margin-left","5mm");
+
+
+
           //plantilla8 area centro
 
           $(".areacentro").css("width","70mm");
@@ -538,10 +644,54 @@ $("#id_select2_example").change(function(){
           $(".areacentro").css("margin-top","60mm");
           $(".areacentro").css("margin-left","70mm");
 
+          //plantilla 10
+
+          $(".area1plantilla10").css("width","95mm");
+          $(".area1plantilla10").css("height","190mm");
+          $(".area1plantilla10").css("margin-top","7mm");
+          $(".area1plantilla10").css("margin-left","5mm");
+
+          $(".area2plantilla10").css("width","95mm");
+          $(".area2plantilla10").css("height","190mm");
+          $(".area2plantilla10").css("margin-top","-190mm");
+          $(".area2plantilla10").css("float","");
+         
+          $(".area2plantilla10").css("margin-left","105mm");
+
+          //plantilla 11
+          $(".area1plantilla11").css("width","170mm");
+          $(".area1plantilla11").css("height","170mm");
+          $(".area1plantilla11").css("margin-top","20mm");
+          $(".area1plantilla11").css("margin-left","20mm");
+
+          //plantilla 12  //pendiente
+
+          /*$(".area1plantilla12").css("width","250mm");
+          $(".area1plantilla12").css("height","245mm");
+          $(".area1plantilla12").css("margin-top","20mm");
+          $(".area1plantilla12").css("margin-left","20mm");
+
+
+          $(".area2plantilla12").css("width","250mm");
+          $(".area2plantilla12").css("height","245mm");
+          $(".area2plantilla12").css("margin-top","20mm");
+          $(".area2plantilla12").css("margin-left","20mm");
+
+          $(".area3plantilla12").css("width","250mm");
+          $(".area3plantilla12").css("height","245mm");
+          $(".area3plantilla12").css("margin-top","20mm");
+          $(".area3plantilla12").css("margin-left","20mm");*/
+
+
+
           dimensionesX=211;
           dimensionesY=211;
           left=3;
           posicion="portrait";
+
+          dimensionesXP=822;
+          posicionP="landscape";
+          
 
 
           }
@@ -771,6 +921,8 @@ $("#id_select2_example").change(function(){
 
          parapdf(dimensionesX,dimensionesY,posicion,left);
 
+         //paraportadapdf(dimensionesXP,dimensionesY,posicionP,left);
+
 
         }
 
@@ -844,6 +996,61 @@ $("#id_select2_example").change(function(){
         }
 
           });
+
+
+
+     function paraportadapdf(dimensionesX,dimensionesY,posicion,left){
+      //para generar pdf
+      var element = document.getElementById('element-to-print-portada');
+
+
+         var opt = {
+                margin: [1,left, 3, 0], //top, left, buttom, right,  //1,3,8 
+                //margin: [80, 0, 30, 0], //top, left, buttom, right,
+                filename: 'albumSmart18x14.pdf',
+                image: {type: 'jpeg',quality: 0.98},
+                html2canvas: {dpi: 300, scale: 1},
+                //pagebreak: {mode: ['avoid-all','css', 'legacy']},
+                jsPDF: {unit: 'mm', format:[dimensionesY,dimensionesX], orientation: posicion} //landscape   
+            };
+
+           var worker = html2pdf();
+        
+            console.log(worker);
+            worker.set(opt)
+                  .from(element)
+                  .toPdf()
+                  .get('pdf')
+                  .then(function (doc) {
+                     /* var totalPages = doc.internal.getNumberOfPages();
+                      for (var i=1; i<=totalPages; i++) {
+                          //if (i > 1) {
+                            doc.setPage(i);
+                            doc.setFontSize(10);
+                            doc.text('Página ' + i + ' de ' + totalPages+ " Pedido: 00073635 Fecha : 2023-03-01, álbum ", (doc.internal.pageSize.getWidth() / 2.3), (doc.internal.pageSize.getHeight() - 0.8));
+
+                            if(i==totalPages){
+                              //setTimeout($.unblockUI,0);
+
+                               //location.reload();
+
+                             
+
+                            }
+                            //?????
+                          //}
+                      }//.save();*/
+        
+                 }).outputPdf().then(function(pdf) {
+                // This logs the right base64
+                //console.log(btoa(pdf));
+                  pdfR=(btoa(pdf));
+
+                $.post(urlRaiz+"/pdf",{pdf:pdfR,_token:token});
+
+            });
+
+        }
 
 
 
