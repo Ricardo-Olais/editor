@@ -75,4 +75,36 @@ class EditorController extends Controller
 
 
     }
+
+
+     public function conviertepdfportada(){
+
+
+
+            $pdf_content=$_REQUEST['pdfp'];
+
+            $fecha=date("Ymdhis");
+
+
+            $micarpeta = "pedidos/ORDEN_12345_$fecha/";
+                    if (!file_exists($micarpeta)) {
+                        mkdir($micarpeta, 0777, true);
+                    }
+
+            
+
+            
+
+           
+            $pdf_decoded = base64_decode ($pdf_content);
+            //Write data back to pdf file
+            $pdf = fopen ("$micarpeta/cover_album_$fecha.pdf",'w');
+            fwrite ($pdf,$pdf_decoded);
+            //close output file
+            fclose ($pdf);
+            
+
+
+
+    }
 }

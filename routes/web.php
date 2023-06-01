@@ -29,6 +29,8 @@ Route::get('/plantillas', function () {
 
 Route::post('/pdf', 'EditorController@conviertepdf');
 
+Route::post('/pdfportada', 'EditorController@conviertepdfportada');
+
 
 Route::get('/editorsmartbook/{page}/{type}', 'EditorController@index')->name('index');
 
