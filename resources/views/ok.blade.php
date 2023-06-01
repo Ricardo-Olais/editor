@@ -94,6 +94,21 @@ body{
 
 }
 
+.zoom{
+
+
+transition: 1.5ms ease;
+ -moz-transition: 1.5s ease; /* Firefox */
+ -webkit-transition: 1.5s ease; /* Chrome - Safari */
+ -o-transition: 1.5s ease; /* Opera */
+}
+.zoom:hover{
+transform : scale(1.2);
+-moz-transform : scale(1.1); /* Firefox */
+-webkit-transform : scale(1.1); /* Chrome - Safari */
+-o-transform : scale(1.1); /* Opera */
+-ms-transform : scale(1.1); /* IE9 */ }
+
 
 </style>
 
@@ -137,7 +152,7 @@ body{
 
           //  console.log(valorImg);
 
-           $("#imagenes-album").append('<div class="arrastrable" draggable="true"><img src="'+valorImg+'" width="100%" class="clickable"  style="cursor:pointer;object-fit:cover;width:100%;height:100%;" id="img'+jr+'"/></div>');
+           $("#imagenes-album").append('<div class="arrastrable" draggable="true"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;color:red;" class="eliminaImg" id="'+jr+'"></iconify-icon><img src="'+valorImg+'" width="100%" class="clickable"  style="cursor:pointer;object-fit:cover;width:100%;height:100%;" id="img'+jr+'"/></div>');
 
            //control para recortar imagen al dar doble clic
             $('.clickable').dblclick(function() {
@@ -445,8 +460,8 @@ function actualizarLetra(event) {
   // detecta el nuevo color 
   el_color3 = event.target.value;
   
-  console.log(el_color3);
-     $("#"+colorText).css("color",el_color3);
+  //console.log(colorText);
+     $("#"+localStorage.getItem('colorText')).css("color",el_color3);
 
   }
 
@@ -492,9 +507,9 @@ function actualizarLetra(event) {
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
+    <!--li class="nav-item">
     <a class="nav-link" href="#" ><iconify-icon icon="material-symbols:insert-text" style="font-size: 24px;color:#fff;"></iconify-icon></a>
-    </li>
+    </li-->
     <li class="nav-item">
       <a class="nav-link" href="#" id="local"><iconify-icon icon="material-symbols:image" style="font-size: 24px;color:#fff;"></iconify-icon></a>
     </li>
@@ -506,6 +521,12 @@ function actualizarLetra(event) {
      <li class="nav-item" >
       <input type="color" id="colorLetra" style="display: none;">
       <a class="nav-link" href="#" id="colorforLetra"><iconify-icon icon="ic:baseline-color-lens" style="font-size: 24px;color:#fff;" ></iconify-icon></a>
+    </li>
+
+    <li class="nav-item" >
+     <a class="nav-link" href="#" id="insertTexto" data-toggle="tooltip" title="Texto" style="font-size: 22px;color:#fff;">
+        <iconify-icon icon="material-symbols:insert-text"></iconify-icon>
+      </a>
     </li>
 
     <li class="nav-item">
@@ -613,10 +634,12 @@ function actualizarLetra(event) {
      <li class="nav-item" style="margin-left:30px;">
       <a class="btn btn-primary" id="generar" href="#">Generar album</a>
     </li>
-    
 
    
   </ul>
+  <li class="nav-item" style="float: right;">
+      <iconify-icon icon="mdi:user" style="font-size: 24px;color: #fff;"></iconify-icon>
+    </li>
 </nav>
 
 
@@ -631,14 +654,14 @@ function actualizarLetra(event) {
      <div style="width:120px; height:500px; overflow: scroll;border-radius: 10px;overflow-x: hidden;" id="imagenes-album"></div>
 
   </div>
-
   <div class="col-md-8 offset-2">
 
      <div id="vistasPreviasPadre" style="width:750px;height:70px;background-color:#fff;overflow: scroll;border-radius: 10px;overflow-y: hidden;color:#000">
            <table><tr id="vistasPrevias"></tr></table>
 
-
          </div>
+
+
 
        <div id="element-to-print">
 
@@ -728,6 +751,8 @@ function actualizarLetra(event) {
 
              </tr>
         </table>
+
+
      
     
   </div>
@@ -854,6 +879,53 @@ function actualizarLetra(event) {
 
 
 <!--fin-->
+
+<!--modal inicial-->
+
+<!----Modal de inicio -->
+
+<div class="modal" id="cargarImagenes" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1" style="margin-top:100px;">
+  <div class="modal-dialog" style="width:340px;">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Carga tus Imágenes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <div class="card">
+            <div class="card-body" style="margin-top:30px;">
+             <form method='post' action='' enctype="multipart/form-data" style="display:none;">
+               <input type="file" id='files' name="file1" multiple><br>
+              
+            </form>
+              <button type="button" class="btn btn-default"><img src="{{ URL::to('/') }}/img/logos_carga/facebook.png" width="60"></button>
+              <button type="button" class="btn btn-default"><img src="{{ URL::to('/') }}/img/logos_carga/instagram.jpg" width="60"></button>
+              <button type="button" class="btn btn-default" id="local"><img src="{{ URL::to('/') }}/img/logos_carga/local.jpg" width="57"></button>
+
+              
+              
+            </div>
+          </div>
+         
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Listo</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- fin -->
 
 
 

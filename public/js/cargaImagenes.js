@@ -10,11 +10,18 @@ $(document).ready(function(){
   var muestraPortada=0;
   var dimensionesXP=0;
   var posicionP=0;
+  var incrementoImagen=0;
+
+  //  $('#cargarImagenes').modal('show'); //para la carga de imagenes
+
+
+   $("#cargaIni").click(function(){
+
+       // $('#cargarImagenes').modal('show'); //para la carga de imagenes      
+
+    });
 
   //control para seleccionar plantillas
-
-  
-
   function custom_template(obj){
           var data = $(obj.element).data();
           var text = $(obj.element).text();
@@ -48,7 +55,7 @@ $("#id_select2_example").change(function(){
 
          // incremento //derecha
 
-         alert(valor);
+        // alert(valor);
 
 
 
@@ -298,7 +305,7 @@ $("#id_select2_example").change(function(){
 
       // $("#izquierda").append('<div id="pagIzquierda'+incremento+'"> pagina '+incremento+'<div class="zona-de-soltar" style="width:100%;height:80mm;margin-top:7mm;border-style:dotted;"></div></div>');
 
-        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vistap0'><img src='"+urlRaiz+"/img/hoja.png' width=15 ><br><center><b style='text-align:center;'>Portada</b></center></td>");
+        $("#vistasPrevias").append("<td style='padding-left:10px;padding:5px;cursor:pointer;' id='vistap0'><img src='"+urlRaiz+"/img/hoja.png' width=15 ><img src='"+urlRaiz+"/img/hoja.png' width=15 ><br><center><b style='text-align:center;'>Portada</b></center></td>");
 
         
         $("#vistap0").click(function(){
@@ -508,10 +515,10 @@ $("#id_select2_example").change(function(){
        agregaPagportada=$("#izquierdaPortada").html();
        agregaPagportada2=$("#derechaPortada").html();
 
-       $("#element-to-print-portada").append("<div class='trabajo'>" +agregaPagportada+"</div>");
-       $("#element-to-print-portada").append("<div class='trabajo'>" +agregaPagportada2+"</div>");
+       $("#element-to-print-portada").append("<div class='trabajo'>" +agregaPagportada+agregaPagportada2+"</div>");
+      // $("#element-to-print-portada").append("<div class='trabajo'>" +agregaPagportada2+"</div>");
 
-
+      // return false;
       
 
 
@@ -921,7 +928,7 @@ $("#id_select2_example").change(function(){
 
          parapdf(dimensionesX,dimensionesY,posicion,left);
 
-         //paraportadapdf(dimensionesXP,dimensionesY,posicionP,left);
+         paraportadapdf(dimensionesXP,dimensionesY,posicionP,left);
 
 
         }
@@ -975,7 +982,7 @@ $("#id_select2_example").change(function(){
                             if(i==totalPages){
                               //setTimeout($.unblockUI,0);
 
-                               //location.reload();
+                               location.reload();
 
                              
 
@@ -1046,11 +1053,48 @@ $("#id_select2_example").change(function(){
                 //console.log(btoa(pdf));
                   pdfR=(btoa(pdf));
 
-                $.post(urlRaiz+"/pdf",{pdf:pdfR,_token:token});
+                $.post(urlRaiz+"/pdfportada",{pdfp:pdfR,_token:token});
 
             });
 
         }
+
+
+        //para insertar texto
+
+          $("#insertTexto").click(function(){
+
+            incrementoImagen=incrementoImagen+1;
+
+            $("#pagDerecha"+incremento).append('<div id="draggable'+incrementoImagen+'" class="ui-widget-content draggable"><iconify-icon icon="entypo:erase" style="float:right;cursor:pointer;color:red;" class="eliminaText" id="'+incrementoImagen+'"></iconify-icon><textarea  class="campotransparente" rows="1" id="colorText'+incrementoImagen+'"  style="font-size: 20px;resize: none;border-style: none;text-align: center;" placeholder="Añade Texto"></textarea></div>');
+
+            $( "#draggable"+incrementoImagen).draggable();
+
+
+             $(".eliminaText").click(function(){
+
+              idText= $(this).attr("id");
+
+
+               $( "#draggable"+idText).remove();
+
+
+            });
+
+               $("#colorText"+incrementoImagen).click(function(){
+
+                 localStorage.setItem('colorText', $(this).attr("id"));
+
+                   colorText= $(this).attr("id");
+
+                // alert(colorText);
+
+
+
+            });
+
+
+      });
 
 
 
